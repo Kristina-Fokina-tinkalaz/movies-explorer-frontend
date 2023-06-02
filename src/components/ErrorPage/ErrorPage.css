@@ -1,0 +1,4 @@
+@import url(../../blocks/error-page/error-page.css);
+@import url(../../blocks/error-page/__header/error-page__header.css);
+@import url(../../blocks/error-page/__link-back/error-page__link-back.css);
+@import url(../../blocks/error-page/__text/error-page__text.css);

@@ -1,0 +1,17 @@
+.register__link-signup{
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    text-align: center;
+    color: #2BE080;
+    text-decoration: none;
+    margin-left:6px;
+}
+@media screen and (max-width:550px) {
+    .register__link-signup{
+        font-size: 12px;
+        line-height: 15px;
+    }
+}

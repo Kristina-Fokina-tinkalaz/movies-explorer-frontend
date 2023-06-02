@@ -1,0 +1,15 @@
+.switch__checkbox{
+    display:none;
+}
+.switch__checkbox:checked + .switch__slider {
+    background: #2BE080;
+    border-radius: 20px;
+}
+.switch__checkbox:focus + .switch__slider {
+  box-shadow: 0 0 1px #2BE080;
+}
+.switch__checkbox:checked + .switch__slider:before {
+  -webkit-transform: translateX(13px);
+  -ms-transform: translateX(13px);
+  transform: translateX(13px);
+}

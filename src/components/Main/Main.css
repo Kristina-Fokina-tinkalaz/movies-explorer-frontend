@@ -1,0 +1,9 @@
+@import url(../../blocks/main/main.css);
+@import url(../../blocks/main/__header/main__header.css);
+@import url(./AboutMe/AboutMe.css);
+@import url(./Promo/Promo.css);
+@import url(./NavTab/NavTab.css);
+@import url(./AboutProject/AboutProject.css);
+@import url(./Techs/Techs.css);
+@import url(./Portfolio/Portfolio.css)
+;

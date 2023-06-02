@@ -1,0 +1,20 @@
+@import url(../../blocks/header/header.css);
+@import url(../../blocks/header/__auth/header__auth.css);
+@import url(../../blocks/header/__link-account/header__link-account.css);
+@import url(../../blocks/header/__link-active/header__link-active.css);
+@import url(../../blocks/header/__link-no-active/header__link-no-active.css);
+@import url(../../blocks/header/__links/header__links.css);
+@import url(../../blocks/header/__loggin/header__loggin.css);
+@import url(../../blocks/header/__login/header__login.css);
+@import url(../../blocks/header/__logo/header__logo.css);
+@import url(../../blocks/header/__register/header__register.css);
+
+@import url(../../blocks/header/__button-navTab/header__button-navTab.css);
+@import url(../../blocks/header/__navTab-overlow/header__navTab-overlow.css);
+@import url(../../blocks/header/__navTab-overlow-no-active/header__navTab-overlow-no-active.css);
+@import url(../../blocks/header/__navTab/header__navTab.css);
+@import url(../../blocks/header/__navTab-link-active/header__navTab-link-active.css);
+@import url(../../blocks/header/__navTab-link-no-active/header__navTab-link-no-active.css);
+@import url(../../blocks/header/__navTab-close-button/header__navTab-close-button.css);
+@import url(../../blocks/header/__navTab-links/header__navTab-links.css);
+@import url(../../blocks/header/__navTab-link-account/header__navTab-link-account.css);

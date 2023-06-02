@@ -1,0 +1,13 @@
+.nav-tab{
+    margin: 0px auto;
+    display: flex;
+    justify-content: center;
+}
+@media screen and (max-width:450px) {
+    .nav-tab{
+        margin: 0px 17px;
+        display: grid;
+        gap:6px;
+        grid-template-columns: repeat(3, 1fr);
+    }
+}

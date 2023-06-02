@@ -1,0 +1,20 @@
+.search-form__slider-block{
+    border-left: 1px solid #E8E8E8;
+    display: flex;
+    align-items: center;
+    height: 40px;
+    padding-left: 30px;
+    margin-left: 35px;
+}
+@media screen and (max-width:780px) {
+    .search-form__slider-block{
+        margin-left: 10px;
+    }
+}
+@media screen and (max-width:550px) {
+    .search-form__slider-block{
+        border: none;
+        padding: 0;
+        margin: 35px 0 0 0;
+    }
+}

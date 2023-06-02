@@ -1,0 +1,17 @@
+.footer__link{
+    text-decoration: none;
+    color:#000;
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 16px;
+    margin:0px 0px 0px 20px;
+}
+@media screen and (max-width:450px) {
+    .footer__link{
+        margin: 0px 0px 12px 0px;
+        font-size: 12px;
+        line-height: 15px;
+    }
+}

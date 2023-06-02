@@ -1,0 +1,11 @@
+@import url(../../blocks/register/register.css);
+@import url(../../blocks/register/__button-submit/register__button-submit.css);
+@import url(../../blocks/register/__form/register__form.css);
+@import url(../../blocks/register/__header/register__header.css);
+@import url(../../blocks/register/__input-header/register__input-header.css);
+@import url(../../blocks/register/__input/register__input.css);
+@import url(../../blocks/register/__link-signup-text/register__link-signup-text.css);
+@import url(../../blocks/register/__link-signup/register__link-signup.css);
+@import url(../../blocks/register/__logo/register__logo.css);
+@import url(../../blocks/register/__link-signup-block/register__link-signup-block.css);
+@import url(../../blocks/register/__button-submit-loggin/register__button-submit-loggin.css);

@@ -1,0 +1,22 @@
+.footer__header {
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 16px;
+    text-align: center;
+    color: #A0A0A0;
+    padding-bottom: 20px;
+    margin: 0;
+    width: 100%;
+    border-bottom: 1px solid #E8E8E8;
+    margin-bottom: 20px;
+}
+
+@media screen and (max-width:450px) {
+    .footer__header {
+        font-size: 12px;
+        line-height: 15px;
+        margin-bottom: 31px;
+    }
+}

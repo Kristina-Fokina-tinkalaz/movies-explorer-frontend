@@ -1,6 +1,6 @@
-@import url(../../blocks/footer/footer.css);
-@import url(../../blocks/footer/__bottom/footer__bottom.css);
-@import url(../../blocks/footer/__header/footer__header.css);
-@import url(../../blocks/footer/__link/footer__link.css);
-@import url(../../blocks/footer/__links/footer__links.css);
-@import url(../../blocks/footer/__year/footer__year.css);
+@import url(./footer/footer.css);
+@import url(./footer/__bottom/footer__bottom.css);
+@import url(./footer/__header/footer__header.css);
+@import url(./footer/__link/footer__link.css);
+@import url(./footer/__links/footer__links.css);
+@import url(./footer/__year/footer__year.css);

@@ -1,0 +1,17 @@
+.header__navTab-link {
+    margin: 21px auto 0px;
+    text-decoration: none;
+    color: #000;
+    padding-bottom: 7px;
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
+}
+
+@media screen and (max-width:550px) {
+    .header__navTab-link {
+        margin: 17px auto 0px;
+    }
+}

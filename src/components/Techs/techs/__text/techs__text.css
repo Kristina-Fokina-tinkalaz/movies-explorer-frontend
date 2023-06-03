@@ -1,0 +1,37 @@
+.techs__text {
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: center;
+    width: 500px;
+    margin: 0 auto 100px auto;
+    letter-spacing: -0.04em;
+}
+
+@media screen and (max-width:780px) {
+    .techs__text {
+        width: 455px;
+        margin-bottom: 83px;
+        font-size: 12px;
+        line-height: 18px;
+    }
+}
+
+@media screen and (max-width:600px) {
+    .techs__text {
+        font-size: 12px;
+        line-height: 15px;
+        width: 400px;
+    }
+}
+
+@media screen and (max-width:530px) {
+    .techs__text {
+        width: 284px;
+        font-size: 11px;
+        line-height: 16px;
+        margin-bottom: 50px;
+    }
+}

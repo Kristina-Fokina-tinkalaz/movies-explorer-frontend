@@ -1,0 +1,21 @@
+.header__link-account {
+    text-decoration: none;
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+    background: #F9F9F9;
+    border-radius: 20px;
+    color: #000;
+    height: 32px;
+    width: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto 0;
+}
+
+.header__link-account:hover {
+    color: #908989;
+}

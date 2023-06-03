@@ -1,0 +1,15 @@
+.header__navTab {
+    background-color: #fff;
+    width: 520px;
+    height: 100%;
+    right: 0;
+    position: absolute;
+    display: flex;
+    flex-flow: column;
+}
+
+@media screen and (max-width:550px) {
+    .header__navTab {
+        width: 100%;
+    }
+}

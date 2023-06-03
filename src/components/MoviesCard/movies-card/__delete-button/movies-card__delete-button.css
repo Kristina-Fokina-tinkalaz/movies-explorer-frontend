@@ -1,0 +1,7 @@
+.movies-card__delete-button {
+    height: 30px;
+    right: 14px;
+    top: 19px;
+    width: 30px;
+    position: absolute;
+}

@@ -1,0 +1,23 @@
+.header__navTab-close-button {
+    position: absolute;
+    top: 23px;
+    right: 23px;
+    background-size: contain;
+    height: 30px;
+    width: 30px;
+    background-color: #fff;
+    border: none;
+    padding: 0;
+    background-image: url('/src/images/close-button.svg');
+}
+
+@media screen and (max-width:550px) {
+    .header__navTab-close-button {
+        top: 15px;
+        right: 15px;
+    }
+}
+
+.header__navTab-close-button:hover {
+    border: 1px solid black;
+}

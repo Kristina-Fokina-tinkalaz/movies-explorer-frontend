@@ -1,4 +1,4 @@
-.register__button-submit{
+.register__button-submit {
     margin-top: 125px;
     font-family: 'Inter', Arial, Helvetica, sans-serif;
     font-style: normal;
@@ -9,11 +9,16 @@
     color: #FFFFFF;
     background: #2BE080;
     border-radius: 3px;
-    border:none;
+    border: none;
     width: 100%;
 }
+
 @media screen and (max-width:550px) {
-    .register__button-submit{
+    .register__button-submit {
         margin-top: 213px;
     }
+}
+
+.register__button-submit:hover {
+    color: #969696;
 }

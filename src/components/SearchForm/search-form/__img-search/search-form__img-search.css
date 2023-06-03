@@ -1,0 +1,12 @@
+.search-form__img-search {
+    height: 34px;
+    width: 34px;
+    object-fit: cover;
+    margin: 19px 10px 19px 19px;
+}
+
+@media screen and (max-width:550px) {
+    .search-form__img-search {
+        display: none;
+    }
+}

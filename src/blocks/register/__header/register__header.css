@@ -1,14 +1,15 @@
-.register__header{
+.register__header {
     font-family: 'Inter', Arial, Helvetica, sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 24px;
     line-height: 29px;
     margin-bottom: 40px;
-    margin-top:0px;
+    margin-top: 0px;
 }
+
 @media screen and (max-width:550px) {
-    .register__header{
+    .register__header {
         text-align: center;
         margin-bottom: 80px;
     }

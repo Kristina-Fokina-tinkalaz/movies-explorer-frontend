@@ -1,4 +1,4 @@
-Ссылка на файл figma : https://disk.yandex.ru/d/Bh0iNLRKJDo7tg
+Ссылка на файл figma : https://disk.yandex.ru/d/3ROndr8vtvHx4w
 
 # Getting Started with Create React App
 

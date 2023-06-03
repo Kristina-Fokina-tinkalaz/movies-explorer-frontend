@@ -1,4 +1,4 @@
-.main__header{
+.main__header {
     font-family: 'Inter', Arial, Helvetica, sans-serif;
     font-style: normal;
     font-weight: 400;
@@ -7,9 +7,11 @@
     padding-bottom: 23px;
     border-bottom: 1px solid #000;
     margin: 0;
+    letter-spacing: -0.04em;
 }
+
 @media screen and (max-width:450px) {
-    .main__header{
+    .main__header {
         font-size: 18px;
         line-height: 22px;
         padding-bottom: 27px;

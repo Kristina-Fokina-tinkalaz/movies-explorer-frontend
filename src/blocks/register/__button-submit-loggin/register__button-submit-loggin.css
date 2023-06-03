@@ -1,4 +1,4 @@
-.register__button-submit-loggin{
+.register__button-submit-loggin {
     margin-top: 194px;
     font-family: 'Inter', Arial, Helvetica, sans-serif;
     font-style: normal;
@@ -12,8 +12,13 @@
     border: none;
     width: 100%;
 }
+
 @media screen and (max-width:550px) {
-    .register__button-submit-loggin{
+    .register__button-submit-loggin {
         margin-top: 283px;
     }
+}
+
+.register__button-submit-loggin:hover {
+    color: #969696;
 }

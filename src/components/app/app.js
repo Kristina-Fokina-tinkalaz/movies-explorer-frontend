@@ -4,11 +4,12 @@ import "../../index.css";
 
 import Main from '../Main/Main.js';
 import Movies from '../Movies/Movies.js';
-import SavedMovies from '../SavedMovies/SavedMovies.js';
 import Profile from '../Profile/Profile.js';
 import Register from '../Register/Register.js';
 import Login from "../Login/Login";
 import ErrorPage from "../ErrorPage/ErrorPage";
+import mainMovies from "../../utils/movies";
+import saveMovies from "../../utils/save-movies";
 
 function App() {
   return (
@@ -21,11 +22,11 @@ function App() {
             />
             <Route
             path="/movies"
-            element={<Movies isLoggin="true" buttonMore="true"/>}
+            element={<Movies isLoggin="true" buttonMore="true" savePage={false} movies={mainMovies}/>}
             />
             <Route
             path="/saved-movies"
-            element={<SavedMovies isLoggin="true"/>}
+            element={<Movies isLoggin="true" buttonMore="false" savePage={true} movies={saveMovies}/>}
             />
             <Route
             path="/profile"

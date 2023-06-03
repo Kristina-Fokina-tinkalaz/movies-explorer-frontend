@@ -1,0 +1,15 @@
+.profile__form_input {
+    border: none;
+    outline: none;
+    text-align: end;
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 11px;
+    line-height: 13px;
+    width: 50%;
+}
+
+.profile__form_input:hover {
+    color: #34ee54;
+}

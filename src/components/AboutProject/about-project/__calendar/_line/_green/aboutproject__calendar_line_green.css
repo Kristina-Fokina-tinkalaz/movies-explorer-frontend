@@ -1,0 +1,26 @@
+.about-project__calendar_line_green {
+    background-color: #2BE080;
+    width: 20%;
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media screen and (max-width:780px) {
+    .about-project__calendar_line_green {
+        width: 21%;
+    }
+}
+
+@media screen and (max-width:450px) {
+    .about-project__calendar_line_green {
+        font-size: 11px;
+        line-height: 13px;
+        width: 44%;
+    }
+}

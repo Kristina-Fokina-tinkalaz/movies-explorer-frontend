@@ -1,15 +1,19 @@
-.register__input{
-    border-bottom:1px solid #E8E8E8;
-    border-top:none;
+.register__input {
+    border-bottom: 1px solid #E8E8E8;
+    border-top: none;
     border-left: none;
     border-right: none;
     background-color: none;
-    outline:none;
+    outline: none;
     margin-bottom: 24px;
-    padding-bottom:10px;
+    padding-bottom: 10px;
     font-family: 'Inter', Arial, Helvetica, sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
     line-height: 17px;
+}
+
+.register__input:hover {
+    border-bottom: 1px solid #969696;
 }

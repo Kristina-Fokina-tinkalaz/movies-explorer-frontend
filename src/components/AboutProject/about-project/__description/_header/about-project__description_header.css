@@ -1,0 +1,16 @@
+.about-project__description_header {
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    margin: 0;
+    letter-spacing: -0.04em;
+}
+
+@media screen and (max-width:450px) {
+    .about-project__description_header {
+        font-size: 18px;
+        line-height: 22px;
+    }
+}

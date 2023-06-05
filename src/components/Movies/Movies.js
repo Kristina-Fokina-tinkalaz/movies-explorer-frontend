@@ -7,10 +7,10 @@ function Movies(props){
     return(
         <>
         <Header isLoggin={props.isLoggin}/>
-        <div className="movies">
+        <main className="movies">
             <SearchForm />
             <MoviesCardList movies={props.movies} buttonMore={props.buttonMore} savePage={props.savePage} />
-        </div>
+        </main>
         <Footer />
         </>
     )

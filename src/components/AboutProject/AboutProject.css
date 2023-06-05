@@ -1,13 +1,80 @@
-@import url(./about-project/about-project.css);
-@import url(./about-project/__calendar/about-project__calendar.css);
-@import url(./about-project/__calendar/_header/about-project__calendar_header.css);
-@import url(./about-project/__calendar/_header/_green/aboutproject__calendar_header_green.css);
-@import url(./about-project/__calendar/_header/_white/aboutproject__calendar_header_white.css);
-@import url(./about-project/__calendar/_line/aboutproject__calendar_line.css);
-@import url(./about-project/__calendar/_line/_green/aboutproject__calendar_line_green.css);
-@import url(./about-project/__calendar/_line/_white/aboutproject__calendar_line_white.css);
-@import url(./about-project/__description/about-project__description.css);
-@import url(./about-project/__description/_header/about-project__description_header.css);
-@import url(./about-project/__description/_item/about-project__description_item.css);
-@import url(./about-project/__description/_text/about-project__description_text.css);
-@import url(./about-project/__header/about-project__header.css);
+.about-project {
+    padding: 110px 70px 100px 70px;
+}
+
+.about-project__description {
+    margin-top: 70px;
+    margin-bottom: 110px;
+    display: flex;
+    gap: 40px;
+}
+
+.about-project__item {
+    width: 50%;
+}
+
+.about-project__text {
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    margin-top: 25px;
+    margin-bottom: 0;
+}
+
+@media screen and (max-width: 780px) {
+    .about-project {
+        padding: 90px 50px 89px 50px;
+    }
+
+    .about-project__description {
+        margin-bottom: 93px;
+        gap: 30px;
+    }
+
+    .about-project__text {
+        font-size: 12px;
+        line-height: 18px;
+        margin-top: 22px;
+    }
+}
+
+@media screen and (max-width:450px) {
+    .about-project {
+        padding: 73px 18px 89px 18px;
+    }
+
+    .about-project__title {
+        font-size: 18px;
+        line-height: 22px;
+    }
+
+    .about-project__description {
+        margin-top: 8px;
+        flex-direction: column;
+        gap: 0px;
+        margin-bottom: 60px;
+    }
+
+    .about-project__item {
+        width: 100%;
+        margin-top: 54px;
+    }
+
+    .about-project__text {
+        margin-top: 14px;
+        font-size: 11px;
+        line-height: 16px;
+    }
+}
+
+.about-project__title {
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    margin: 0;
+    letter-spacing: -0.04em;
+}

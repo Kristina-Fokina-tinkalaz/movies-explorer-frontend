@@ -1,5 +1,84 @@
-@import url(./movies-cardlist/movies-cardlist.css);
-@import url(./movies-cardlist/__button_more/movies-cardlist__button_more.css);
-@import url(./movies-cardlist/__button_more-none/movies-cardlist__button_more-none.css);
-@import url(./movies-cardlist/__button-block/movies-cardlist__button-block.css);
-@import url(./movies-cardlist/__button-block-none/movies-cardlist__button-block-none.css);
+.movies-cardlist {
+    padding: 70px 70px 30px 70px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px 24px;
+}
+
+.movies-cardlist__button {
+    margin: 35px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 320px;
+    height: 36px;
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 15px;
+    background: #FFF;
+    border: 1px solid #E8E8E8;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.movies-cardlist__button:hover {
+    color: #908989;
+}
+
+.movies-cardlist__button_none {
+    display: none;
+}
+
+.movies-cardlist__button-block {
+    height: 114px;
+}
+
+.movies-cardlist__button-block_none {
+    height: 133px;
+}
+
+@media screen and (max-width:880px) {
+    .movies-cardlist {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 31px 30px;
+        padding: 14px 30px 69px 30px;
+    }
+}
+
+@media screen and (max-width:780px) {
+    .movies-cardlist__button {
+        margin: 10px auto 80px auto;
+    }
+
+    .movies-cardlist__button-block {
+        height: 119px;
+    }
+
+    .movies-cardlist__button-block_none {
+        height: 101px;
+    }
+}
+
+@media screen and (max-width:550px) {
+    .movies-cardlist {
+        grid-template-columns: repeat(1, 1fr);
+        gap: 11px 30px;
+        padding: 50px 10px 66px 10px;
+    }
+
+    .movies-cardlist__button {
+        width: 240px;
+    }
+}
+
+@media screen and (max-width:450px) {
+    .movies-cardlist__button-block_none {
+        height: 0px;
+    }
+
+    .movies-cardlist__button-block {
+        height: 17px;
+    }
+}

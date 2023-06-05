@@ -1,6 +1,148 @@
-@import url(./techs/techs.css);
-@import url(./techs/__description/techs__description.css);
-@import url(./techs/__header/techs__header.css);
-@import url(./techs/__lable/techs__lable.css);
-@import url(./techs/__lables/techs__lables.css);
-@import url(./techs/__text/techs__text.css);
+.techs {
+    background: #F5F5F5;
+    padding: 110px 70px 100px 70px;
+    margin: 0;
+}
+
+.techs__text {
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: center;
+    width: 500px;
+    margin: 0 auto 100px auto;
+    letter-spacing: -0.04em;
+}
+
+.techs__lables {
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+}
+
+.techs__lable {
+    background: #E8E8E8;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    WIDTH: 90px;
+    height: 60px;
+    margin: 0 5px;
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+}
+
+.techs__header {
+    border-bottom: 1px solid #000;
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 27px;
+    margin-top: 110px;
+    padding-bottom: 23px;
+    margin: 0px 70px 90px 70px;
+    padding-top: 100px;
+}
+
+.techs__description {
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 50px;
+    line-height: 58px;
+    text-align: center;
+    margin-bottom: 26px;
+    margin-top: 90px;
+    letter-spacing: -0.04em;
+}
+
+
+
+@media screen and (max-width:780px) {
+    .techs {
+        padding: 90px 50px 90px 50px;
+    }
+
+    .techs__lable {
+        width: 85px;
+        height: 57px;
+        font-size: 12px;
+        line-height: 15px;
+    }
+
+    .techs__description {
+        margin-top: 82px;
+        margin-bottom: 20px;
+    }
+
+    .techs__text {
+        width: 455px;
+        margin-bottom: 83px;
+        font-size: 12px;
+        line-height: 18px;
+    }
+}
+
+@media screen and (max-width:600px) {
+    .techs__lables {
+        grid-template-columns: repeat(3, 1fr);
+        display: grid;
+        margin: 0 70px;
+        gap: 10px;
+    }
+
+    .techs__description {
+        font-size: 40px;
+        line-height: 45px;
+    }
+
+    .techs__text {
+        font-size: 12px;
+        line-height: 15px;
+        width: 400px;
+    }
+}
+
+
+@media screen and (max-width:530px) {
+    .techs__text {
+        width: 284px;
+        font-size: 11px;
+        line-height: 16px;
+        margin-bottom: 50px;
+    }
+}
+
+@media screen and (max-width:450px) {
+    .techs {
+        padding: 54px 18px 45px 18px;
+        background: #fff;
+    }
+
+    .techs__description {
+        font-size: 30px;
+        line-height: 36px;
+        margin-top: 60px;
+        margin-bottom: 24px;
+    }
+
+    .techs__lables {
+        grid-template-columns: repeat(2, 1fr);
+        display: grid;
+        margin: 0 70px;
+        padding: 0;
+    }
+
+    .techs__lable {
+        margin: 0px;
+        width: 84px;
+    }
+}

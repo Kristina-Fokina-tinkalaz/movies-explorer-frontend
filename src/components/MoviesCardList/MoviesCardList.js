@@ -1,6 +1,6 @@
 import MoviesCard from "../MoviesCard/MoviesCard";
 
-
+export default MoviesCardList;
 
 function MoviesCardList(props){
     return(
@@ -20,10 +20,9 @@ function MoviesCardList(props){
             })
             }
         </div>
-            <div className={(props.buttonMore) ? "movies-cardlist__button-block" : "movies-cardlist__button-block-none"}>
-                <button className={(props.buttonMore) ? "movies-cardlist__button_more" : "movies-cardlist__button_more-none"}>Ещё</button>
+            <div className={(props.buttonMore) ? "movies-cardlist__button-block" : "movies-cardlist__button-block_none"}>
+                <button className={(props.buttonMore) ? "movies-cardlist__button" : "movies-cardlist__button_none"}>Ещё</button>
             </div>
         </>
     )
 }
-export default MoviesCardList;

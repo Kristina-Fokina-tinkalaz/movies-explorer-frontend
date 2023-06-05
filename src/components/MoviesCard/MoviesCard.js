@@ -10,9 +10,9 @@ function MoviesCard(props){
             { props.savePage
             ?
             (
-            <img className="movies-card__delete-button" src={deleteButton} alt="delete-button" />
+            <img className="movies-card__button" src={deleteButton} alt="delete-button" />
             ) : (
-            <img className={!props.saveMovie ? "movies-card__save-card-button-none" : "movies-card__save-card-button"} src={saveButton} alt="save-button" />
+            <img className={!props.saveMovie ? "movies-card__button_none" : "movies-card__button"} src={saveButton} alt="save-button" />
             ) 
             }
             

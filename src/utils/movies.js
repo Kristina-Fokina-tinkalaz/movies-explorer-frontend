@@ -1,5 +1,5 @@
-import movieCard from "../images/movie-card.png";
-import movieCard2 from "../images/movie-card2.png";
+import movieCard from "../images/movie-card.jpeg";
+import movieCard2 from "../images/movie-card2.jpeg";
 
 const movies = [
     {

@@ -1,7 +1,56 @@
-@import url(./movies-card/movies-card.css);
-@import url(./movies-card/__header/movies-card__header.css);
-@import url(./movies-card/__img/movies-card__img.css);
-@import url(./movies-card/__time/movies-card__time.css);
-@import url(./movies-card/__save-card-button/movies-card__save-card-button.css);
-@import url(./movies-card/__save-card-button-none/movies-card__save-card-button-none.css);
-@import url(./movies-card/__delete-button/movies-card__delete-button.css);
+.movies-card {
+    background: #FDFDFD;
+    box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.08);
+    position: relative;
+}
+
+.movies-card__time {
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 11px;
+    line-height: 13px;
+    color: #A0A0A0;
+    margin: 0px 14px;
+}
+
+.movies-card__img {
+    margin-top: 14px;
+    height: 200px;
+    width: 100%;
+    object-fit: cover;
+}
+
+.movies-card__header {
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 18px;
+    margin: 14px 14px 8px 14px;
+}
+
+.movies-card__button {
+    height: 30px;
+    right: 14px;
+    top: 19px;
+    width: 30px;
+    position: absolute;
+}
+
+.movies-card__button_none {
+    display: none;
+}
+
+@media screen and (max-width:780px) {
+    .movies-card__img {
+        margin-top: 10px;
+        height: 190px;
+    }
+}
+
+@media screen and (max-width:550px) {
+    .movies-card__img {
+        height: 168px;
+    }
+}

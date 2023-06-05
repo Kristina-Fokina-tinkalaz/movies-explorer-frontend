@@ -5,16 +5,14 @@ import "../../index.css";
 import Main from '../Main/Main.js';
 import Movies from '../Movies/Movies.js';
 import Profile from '../Profile/Profile.js';
-import Register from '../Register/Register.js';
-import Login from "../Login/Login";
+import Auth from "../Auth/Auth";
 import ErrorPage from "../ErrorPage/ErrorPage";
 import mainMovies from "../../utils/movies";
 import saveMovies from "../../utils/save-movies";
 
 function App() {
   return (
-    <div className="body">
-      <div className="page">
+    <div className="main">
         <Routes>
             <Route
             path="/"
@@ -22,11 +20,11 @@ function App() {
             />
             <Route
             path="/movies"
-            element={<Movies isLoggin="true" buttonMore="true" savePage={false} movies={mainMovies}/>}
+            element={<Movies isLoggin="true" buttonMore={true} savePage={false} movies={mainMovies}/>}
             />
             <Route
             path="/saved-movies"
-            element={<Movies isLoggin="true" buttonMore="false" savePage={true} movies={saveMovies}/>}
+            element={<Movies isLoggin="true" buttonMore={false} savePage={true} movies={saveMovies}/>}
             />
             <Route
             path="/profile"
@@ -34,11 +32,11 @@ function App() {
             />
             <Route
             path="/signup"
-            element={<Register />}
+            element={<Auth loginPage={false} />}
             />
             <Route
             path="/signin"
-            element={<Login />}
+            element={<Auth loginPage={true}/>}
             />
             <Route
             path="*"
@@ -47,7 +45,6 @@ function App() {
         </Routes>
        
       </div>
-    </div>
   );
 };
 

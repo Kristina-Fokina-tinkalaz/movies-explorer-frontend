@@ -1,0 +1,114 @@
+.navigate {
+    background-color: #fff;
+    width: 520px;
+    height: 100%;
+    right: 0;
+    position: absolute;
+    display: flex;
+    flex-flow: column;
+}
+
+.navigate__close-button {
+    position: absolute;
+    top: 23px;
+    right: 23px;
+    background-size: contain;
+    height: 30px;
+    width: 30px;
+    background-color: #fff;
+    border: none;
+    padding: 0;
+    background-image: url('/src/images/close-button.svg');
+}
+
+.navigate__close-button:hover {
+    border: 1px solid black;
+}
+
+.navigate__link {
+    margin: 21px auto 0px;
+    text-decoration: none;
+    color: #000;
+    padding-bottom: 7px;
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
+}
+
+.navigate__link_active {
+    margin: 21px auto 0px;
+    text-decoration: none;
+    border-bottom: 2px solid #000;
+    padding-bottom: 7px;
+    color: #000;
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
+}
+
+.navigate__link-account {
+    margin: 611px auto;
+    text-decoration: none;
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+    color: #000000;
+    background: #F9F9F9;
+    border-radius: 20px;
+    padding: 8px 20px;
+}
+
+
+.navigate__links {
+    display: flex;
+    padding-top: 136px;
+    flex-flow: column;
+}
+
+.navigate__overlow {
+    background-color: rgba(0, 0, 0, 0.3);
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    display: block;
+    z-index: 1;
+}
+
+.navigate__overlow_no-active {
+    display: none;
+}
+
+@media screen and (max-width:550px) {
+    .navigate {
+        width: 100%;
+    }
+
+    .navigate__close-button {
+        top: 15px;
+        right: 15px;
+    }
+
+    .navigate__links {
+        padding-top: 127px;
+    }
+
+    .navigate__link-account {
+        margin: 436px auto 30px;
+    }
+
+    .navigate__link_active {
+        margin: 17px auto 0px;
+    }
+
+    .navigate__link {
+        margin: 17px auto 0px;
+    }
+}

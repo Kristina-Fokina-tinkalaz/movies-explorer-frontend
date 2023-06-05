@@ -29,7 +29,7 @@ function Header(props) {
           </div>
           <Link to="/profile" className="header__link-account">Аккаунт</Link>
         </div>
-        <button onClick={openNavTab} className="header__navigate"></button>
+        <button type="button" onClick={openNavTab} className="header__navigate"></button>
         <Navigate overlowClass={overlow} closeNavTab={closeNavTab} />
       </>
       )

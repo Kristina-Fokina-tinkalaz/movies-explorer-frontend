@@ -21,7 +21,7 @@ function MoviesCardList(props){
             }
         </div>
             <div className={(props.buttonMore) ? "movies-cardlist__button-block" : "movies-cardlist__button-block_none"}>
-                <button className={(props.buttonMore) ? "movies-cardlist__button" : "movies-cardlist__button_none"}>Ещё</button>
+                <button type="button" className={(props.buttonMore) ? "movies-cardlist__button" : "movies-cardlist__button_none"}>Ещё</button>
             </div>
         </>
     )

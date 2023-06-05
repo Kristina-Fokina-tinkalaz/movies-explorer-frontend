@@ -15,7 +15,7 @@ function Navigate(props){
             <Link to="/profile" className="navigate__link-account">Аккаунт</Link>
           </div>
           
-          <button className="navigate__close-button" onClick={props.closeNavTab} ></button>
+          <button type="button" className="navigate__close-button" onClick={props.closeNavTab} ></button>
         </div>
     );
 }

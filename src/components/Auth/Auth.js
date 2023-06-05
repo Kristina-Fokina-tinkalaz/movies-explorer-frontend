@@ -31,7 +31,7 @@ function Auth(props){
                 <input type="text" className="auth__input" name="email" value={email} onChange={handleEmailChange} required/>
                 <span className="auth__input-header">Пароль</span>
                 <input type="password" className="auth__input" name="password" value={password} onChange={handlePasswordChange} required />
-                <button className={props.loginPage ? "auth__button-login" : "auth__button-register"}>{props.loginPage ? "Войти" : "Зарегистрироваться"}</button>
+                <button type="button" className={props.loginPage ? "auth__button-login" : "auth__button-register"}>{props.loginPage ? "Войти" : "Зарегистрироваться"}</button>
                 <div className="auth__link-block">
                     <span className="auth__link-text">{props.loginPage ? "Ещё не зарегистрированы?" : "Уже зарегистрированы?"}</span>
                     <Link to={props.loginPage ? "/signup" : "/signin"} className="auth__link">{props.loginPage ? "Регистрация" : "Войти"}</Link>

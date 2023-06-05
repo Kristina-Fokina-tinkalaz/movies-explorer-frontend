@@ -22,10 +22,10 @@ function ProfileForm(props){
                     <span className="profile-form__input-header">E-mail</span>
                     <input className="profile-form__input" type="text" value={email} onChange={handleEmailChange} name="email"/>
                 </label>
-                <button className="profile-form__edit-button" 
+                <button type="button" className="profile-form__edit-button" 
                 
                 >Редактировать</button>
-                <button className="profile-form__logout-button">Выйти из аккаунта</button>
+                <button type="button" className="profile-form__logout-button">Выйти из аккаунта</button>
             </form>
     )
 }

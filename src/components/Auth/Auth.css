@@ -37,8 +37,18 @@
     width: 100%;
 }
 
+.auth__button_disabled {
+    background: #d7e1db;
+
+}
+
 .auth__button-register:hover {
     color: #969696;
+}
+
+.auth__button_disabled:hover {
+    background: #d7e1db;
+    color: #FFFFFF;
 }
 
 .auth__form {
@@ -70,6 +80,7 @@
     font-weight: 400;
     font-size: 14px;
     line-height: 17px;
+    width: 100%;
 }
 
 .auth__input:hover {
@@ -85,6 +96,26 @@
     color: #A0A0A0;
     margin-top: 0px;
     margin-bottom: 5px;
+}
+
+.auth__input-error {
+    color: #EE3465;
+    border-bottom: 1px solid #EE3465;
+}
+
+.auth__label {
+    position: relative;
+}
+
+.auth__massage-error {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 12px;
+    color: #EE3465;
+    top: 30px;
+    width: 100%;
+    position: absolute;
 }
 
 .auth__link {

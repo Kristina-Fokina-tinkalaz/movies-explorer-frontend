@@ -27,19 +27,26 @@
     font-weight: 500;
     font-size: 15px;
     line-height: 18px;
-    margin: 14px 14px 8px 14px;
+    margin: 14px 44px 8px 14px;
 }
 
 .movies-card__button {
     height: 30px;
+    width: 30px;
     right: 14px;
     top: 19px;
-    width: 30px;
     position: absolute;
 }
 
 .movies-card__button_none {
-    display: none;
+    height: 13px;
+    right: 14px;
+    padding: 8.5px 10px;
+    top: 19px;
+    width: 10px;
+    position: absolute;
+    background: #F9F9F9;
+    border-radius: 36px;
 }
 
 @media screen and (max-width:780px) {

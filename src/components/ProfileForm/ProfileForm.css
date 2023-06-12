@@ -15,6 +15,10 @@
     line-height: 16px;
 }
 
+.profile-form__edit-button_disabled {
+    color: #939992;
+}
+
 .profile-form__edit-button:hover {
     color: #908989;
 }
@@ -48,6 +52,7 @@
     display: flex;
     justify-content: space-between;
     margin-top: 16px;
+    position: relative;
 }
 
 .profile-form__line {

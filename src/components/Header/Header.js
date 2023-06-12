@@ -15,11 +15,10 @@ function Header(props) {
     setOverlow("navigate__overlow");
   }
  
- 
   return (
     <header className="header">
       <Link to="/" className="header__logo"/>
-      { (props.isLoggin === "true") ?
+      { (props.loggedIn) ?
       (
       <>
         <div className="header__nav-tab">

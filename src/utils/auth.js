@@ -1,4 +1,5 @@
-export const BASE_URL = "https://auth.nomoreparties.co";
+export const BASE_URL = "https://movie-tinkalaz.nomoredomains.monster";
+// export const BASE_URL = "http://localhost:3000";
 
 function getResult(data) {
   if (data.ok) {
@@ -7,7 +8,7 @@ function getResult(data) {
   return Promise.reject(`Что-то пошло не так: ${data.status}`);
 }
 
-export const register = (email, password) => {
+export const register = ({name, email, password}) => {
   return fetch(`${BASE_URL}/signup`, {
     method: "POST",
     headers: {
@@ -15,12 +16,13 @@ export const register = (email, password) => {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      password: password,
+      name: name,
       email: email,
+      password: password,
     }),
   }).then(getResult);
 };
-export const authorize = (email, password) => {
+export const authorize = ({email, password}) => {
   return fetch(`${BASE_URL}/signin`, {
     method: "POST",
     headers: {

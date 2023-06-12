@@ -1,0 +1,101 @@
+.calendar {
+    margin-bottom: 0px;
+}
+
+.calendar__line {
+    display: flex;
+    width: 100%;
+    height: 36px;
+}
+
+.calendar__line_green {
+    background-color: #2BE080;
+    width: 20%;
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.calendar__line_white {
+    background-color: #F2F2F2;
+    width: 80%;
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.calendar__header {
+    display: flex;
+}
+
+.calendar__header_green {
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    font-family: 'Suisse Intl', Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: #A0A0A0;
+    margin: 15px 0px 0px 0px;
+}
+
+.calendar__header_white {
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    font-family: 'Suisse Intl', Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: #A0A0A0;
+    margin: 15px 0px 0px 0px;
+}
+
+@media screen and (max-width:780px) {
+    .calendar__header_green {
+        width: 21%;
+    }
+
+    .calendar__line_green {
+        width: 21%;
+    }
+}
+
+@media screen and (max-width:450px) {
+    .calendar__line_green {
+        font-size: 11px;
+        line-height: 13px;
+        width: 44%;
+    }
+
+    .calendar__line_white {
+        font-size: 11px;
+        line-height: 13px;
+    }
+
+    .calendar__header_green {
+        font-size: 11px;
+        line-height: 13px;
+        margin: 8px 0px 0px 0px;
+        width: 44%;
+    }
+
+    .calendar__header_white {
+        font-size: 11px;
+        line-height: 13px;
+        margin: 8px 0px 0px 0px;
+    }
+}

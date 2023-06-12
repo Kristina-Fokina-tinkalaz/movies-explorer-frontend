@@ -1,0 +1,91 @@
+.profile-form {
+    width: 100%;
+}
+
+.profile-form__edit-button {
+    margin-top: 220px;
+    width: 100%;
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 16px;
+}
+
+.profile-form__edit-button_disabled {
+    color: #939992;
+}
+
+.profile-form__edit-button:hover {
+    color: #908989;
+}
+
+.profile-form__input {
+    border: none;
+    outline: none;
+    text-align: end;
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 11px;
+    line-height: 13px;
+    width: 50%;
+}
+
+.profile-form__input:hover {
+    color: #34ee54;
+}
+
+.profile-form__input-header {
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 11px;
+    line-height: 13px;
+}
+
+.profile-form__label {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 16px;
+    position: relative;
+}
+
+.profile-form__line {
+    border-bottom: 1px solid #E8E8E8;
+    padding-bottom: 16px;
+}
+
+.profile-form__logout-button {
+    margin-top: 16px;
+    width: 100%;
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 16px;
+    color: #EE3465;
+}
+
+.profile__form_logout-button:hover {
+    color: #bb8291;
+}
+
+@media screen and (max-width:780px) {
+    .profile-form__edit-button {
+        margin-top: 210px;
+    }
+}
+
+@media screen and (max-width:550px) {
+    .profile-form__edit-button {
+        margin-top: 375px;
+    }
+}

@@ -1,5 +1,5 @@
-// export const BASE_URL = "https://movie-tinkalaz.nomoredomains.monster";
-export const BASE_URL = "http://localhost:3000";
+export const BASE_URL = "https://movie-tinkalaz.nomoredomains.monster";
+// export const BASE_URL = "http://localhost:3000";
 
 function getResult(data) {
   if (data.ok) {

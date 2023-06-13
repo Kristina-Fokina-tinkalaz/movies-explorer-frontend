@@ -16,7 +16,10 @@ class MainApi extends React.Component {
   getInitialMovies() {
   
     return fetch(`${this._baseUrl}` + `/movies`, {
-      headers: this._headers,
+      headers: {
+    "Content-Type": "application/json",
+    authorization: `Bearer ${localStorage.getItem("jwt")}`
+  },
     }).then(this._getResult);
   }
 
@@ -36,7 +39,10 @@ class MainApi extends React.Component {
   
     return fetch(`${this._baseUrl}` + `/movies`, {
       method: "POST",
-      headers: this._headers,
+     headers: {
+    "Content-Type": "application/json",
+    authorization: `Bearer ${localStorage.getItem("jwt")}`
+  },
       body: JSON.stringify({
             country,
             director,
@@ -55,7 +61,10 @@ class MainApi extends React.Component {
   deleteCard(_id){
     return( fetch(`${this._baseUrl}` + `/movies/` + `${_id}`, {
       method: "DELETE",
-      headers:this._headers,
+      headers: {
+    "Content-Type": "application/json",
+    authorization: `Bearer ${localStorage.getItem("jwt")}`
+  },
       body: JSON.stringify({
         _id: _id,
       }),
@@ -63,16 +72,21 @@ class MainApi extends React.Component {
   }
 
    getUserData() {
-
     return fetch(`${this._baseUrl}` + `/users/me`, {
-      headers: this._headers,
+      headers: {
+    "Content-Type": "application/json",
+    authorization: `Bearer ${localStorage.getItem("jwt")}`
+  },
     }).then(this._getResult);
   }
 
   updateProfile(name, email) {
     return fetch(`${this._baseUrl}` + `/users/me`, {
       method: "PATCH",
-      headers: this._headers,
+     headers: {
+    "Content-Type": "application/json",
+    authorization: `Bearer ${localStorage.getItem("jwt")}`
+  },
       body: JSON.stringify({
         name: name,
         email: email
@@ -85,8 +99,8 @@ class MainApi extends React.Component {
 
 
 const mainApi = new MainApi({
-  // baseUrl: "https://movie-tinkalaz.nomoredomains.monster",
-  baseUrl: "http://localhost:3000",
+  baseUrl: "https://movie-tinkalaz.nomoredomains.monster",
+  // baseUrl: "http://localhost:3000",
   headers: {
     "Content-Type": "application/json",
     authorization: `Bearer ${localStorage.getItem("jwt")}`

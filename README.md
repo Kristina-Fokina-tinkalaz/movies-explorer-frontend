@@ -1,4 +1,7 @@
+https://movie-tinkalaz.frontend.nomoredomains.rocks/
+
 Ссылка на файл figma : https://disk.yandex.ru/d/ZV1Gyb_5g4KDEA
+
 
 # Getting Started with Create React App
 

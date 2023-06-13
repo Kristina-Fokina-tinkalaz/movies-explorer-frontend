@@ -14,7 +14,7 @@ function ProfileForm(props){
         } else {
             setFormValid(false);
         }
-    }, [errorName, errorEmail, name, email])
+    }, [errorName, errorEmail, name, email, props.userName, props.userEmail])
 
     function handleNameChange(e){
         setName(e.target.value);

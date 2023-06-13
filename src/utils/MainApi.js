@@ -14,6 +14,7 @@ class MainApi extends React.Component {
   }
 
   getInitialMovies() {
+  
     return fetch(`${this._baseUrl}` + `/movies`, {
       headers: this._headers,
     }).then(this._getResult);
@@ -32,6 +33,7 @@ class MainApi extends React.Component {
     nameRU,
     nameEN}
     ) {
+  
     return fetch(`${this._baseUrl}` + `/movies`, {
       method: "POST",
       headers: this._headers,
@@ -61,6 +63,7 @@ class MainApi extends React.Component {
   }
 
    getUserData() {
+
     return fetch(`${this._baseUrl}` + `/users/me`, {
       headers: this._headers,
     }).then(this._getResult);
@@ -76,16 +79,17 @@ class MainApi extends React.Component {
       })
     }).then(this._getResult);
   }
+
 }
   
 
 
 const mainApi = new MainApi({
-  baseUrl: "https://movie-tinkalaz.nomoredomains.monster",
-  // baseUrl: "http://localhost:3000",
+  // baseUrl: "https://movie-tinkalaz.nomoredomains.monster",
+  baseUrl: "http://localhost:3000",
   headers: {
     "Content-Type": "application/json",
-    Authorization: `Bearer ${localStorage.getItem("jwt")}`
+    authorization: `Bearer ${localStorage.getItem("jwt")}`
   },
 });
 export default mainApi;

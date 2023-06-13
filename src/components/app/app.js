@@ -17,33 +17,29 @@ import mainApi from "../../utils/MainApi";
 import api from "../../utils/MoviesApi";
 import ProtectedRouteElement from '../ProtectedRoute/ProtectedRoute';
 
-
-
 function App() {
  
-   const [loggedIn, setLoggedIn] = useState(false);
-
+  const [loggedIn, setLoggedIn] = useState(false);
   const [userName, setUserName] = useState('');
   const [userEmail, setUserEmail] = useState('');
-
-
   const [savedMovies, setSavedMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-
-   const [mainMovies, setMainMovies] = useState([]);
-    const [search, setSearch] = useState('');
-    const [searchSavedMovies, setSearchSavedMovies] = useState('');
-    const [isOpenInfoTooltip, setIsOpenInfoTooltip] = useState(false);
-    const [textInfoTooltip, setTextInfoTooltip] = useState("");
-    const [imgInfoTooltip, setImgInfoTooltip] = useState("");
-    const [buttonMore, setButtonMore] = useState(false);
-    const [checkedSwitch, setCheckedSwitch] = useState(false);
+  const [mainMovies, setMainMovies] = useState([]);
+  const [search, setSearch] = useState('');
+  const [searchSavedMovies, setSearchSavedMovies] = useState('');
+  const [isOpenInfoTooltip, setIsOpenInfoTooltip] = useState(false);
+  const [textInfoTooltip, setTextInfoTooltip] = useState("");
+  const [imgInfoTooltip, setImgInfoTooltip] = useState("");
+  const [buttonMore, setButtonMore] = useState(false);
+  const [checkedSwitch, setCheckedSwitch] = useState(false);
 
     useEffect(()=>{
 
       tokenCheck();
+     
 
       if (loggedIn){
+
          mainApi
         .getUserData()
         .then((data) => {
@@ -66,14 +62,23 @@ function App() {
               setTextInfoTooltip(err);
               setImgInfoTooltip(imgError);
             });
+            if ( localStorage.getItem('movies') !== null && mainMovies.length === JSON.parse(localStorage.getItem('movies')).length ){
+                  setButtonMore(false);
+                }
       }
        
+      
+    }, [ setSavedMovies, setUserName, setUserEmail, loggedIn, mainMovies ] );
 
-        if ( mainMovies.length === JSON.parse(localStorage.getItem('movies')).length ){
-            setButtonMore(false);
-        }
-
-    }, [mainMovies, setSavedMovies, setUserName, setUserEmail ] );
+    useEffect(()=>{
+      if (loggedIn){
+        if (localStorage.getItem('movies') !== null){
+          showMovies();
+          setSearch(localStorage.getItem('search'));
+          setCheckedSwitch(JSON.parse(localStorage.getItem('checkedSwitch')));
+        } 
+      }
+    }, [loggedIn]);
 
     function onCheckSwitch(){
       setCheckedSwitch(true);
@@ -135,31 +140,9 @@ function App() {
                 localStorage.setItem('movies', JSON.stringify(result));
                 localStorage.setItem('search', search);
                 localStorage.setItem('checkedSwitch', checkedSwitch);
-
+             
+                showMovies();
                 
-                if (window.innerWidth > 870){
-                    setMainMovies(result.slice(0, 12));
-                    if (result.length > 12) {
-                        setButtonMore(true);
-                    } else {
-                        setButtonMore(false);
-                    }
-                } else if (window.innerWidth > 480 && window.innerWidth <= 870){
-                    setMainMovies(result.slice(0, 8));
-                    if (result.length > 8) {
-                        setButtonMore(true);
-                    } else {
-                        setButtonMore(false);
-                    }
-                } else {
-                    setMainMovies(result.slice(0, 5));
-                    if (result.length > 5) {
-                        setButtonMore(true);
-                    } else {
-                        setButtonMore(false);
-                    }
-                }
-              
             })
             .catch((err) => {
               setIsOpenInfoTooltip(true);
@@ -168,6 +151,30 @@ function App() {
             });
         }
 
+    }
+    function showMovies(){
+           if (window.innerWidth > 870){
+                    setMainMovies(JSON.parse(localStorage.getItem('movies')).slice(0, 12));
+                    if (JSON.parse(localStorage.getItem('movies')).length > 12) {
+                        setButtonMore(true);
+                    } else {
+                        setButtonMore(false);
+                    }
+                } else if (window.innerWidth > 480 && window.innerWidth <= 870){
+                    setMainMovies(JSON.parse(localStorage.getItem('movies')).slice(0, 8));
+                    if (JSON.parse(localStorage.getItem('movies')).length > 8) {
+                        setButtonMore(true);
+                    } else {
+                        setButtonMore(false);
+                    }
+                } else {
+                    setMainMovies(JSON.parse(localStorage.getItem('movies')).slice(0, 5));
+                    if (JSON.parse(localStorage.getItem('movies')).length > 5) {
+                        setButtonMore(true);
+                    } else {
+                        setButtonMore(false);
+                    }
+                }
     }
     function clickButtonMore(){        
          if (window.innerWidth > 870){
@@ -182,8 +189,9 @@ function App() {
   const navigate = useNavigate();
 
     const tokenCheck = () => {
-    const jwt = localStorage.getItem("jwt");
-    if (jwt) {
+
+    if (localStorage.getItem('jwt') !== null) {
+      const jwt = localStorage.getItem("jwt");
       auth
         .checkToken(jwt)
         .then(() => {
@@ -249,6 +257,15 @@ function App() {
       });
   }
   const handleExit = () => {
+    if (localStorage.getItem('movies')){
+       localStorage.removeItem("movies");
+    }
+    if (localStorage.getItem('search')){
+      localStorage.removeItem("search");
+    }
+    if (localStorage.getItem('checkedSwitch')){
+       localStorage.removeItem("checkedSwitch");
+    }
     localStorage.removeItem("jwt");
     navigate("/signin", { replace: true });
   };

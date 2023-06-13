@@ -26,7 +26,7 @@ function Auth(props){
         }
         }
         
-    }, [errorName, errorEmail, errorPassword, name, email, password])
+    }, [props.loginPage, errorName, errorEmail, errorPassword, name, email, password])
  
     function handleEmailChange(e){
         setEmail(e.target.value);

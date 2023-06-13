@@ -19,59 +19,7 @@ class moviesApi extends React.Component {
     }).then(this._getResult);
   }
 
-//   getUserData() {
-//     return fetch(`${this._baseUrl}` + `/users/me`, {
-//       headers: this._headers,
-//     }).then(this._getResult);
-//   }
 
-//   saveEditData(dataName, dataAbout) {
-//     return fetch(`${this._baseUrl}` + `/users/me`, {
-//       method: "PATCH",
-//       headers: this._headers,
-//       body: JSON.stringify({
-//         name: dataName,
-//         about: dataAbout,
-//       }),
-//     }).then(this._getResult);
-//   }
-//   addNewCard(cardName, cardLink) {
-//     return fetch(`${this._baseUrl}` + `/cards`, {
-//       method: "POST",
-//       headers: this._headers,
-//       body: JSON.stringify({
-//         name: cardName,
-//         link: cardLink,
-//       }),
-//     }).then(this._getResult);
-//   }
-
-//   removeCard(cardId) {
-//     return fetch(`${this._baseUrl}` + `/cards/` + `${cardId}`, {
-//       method: "DELETE",
-//       headers: this._headers,
-//       body: JSON.stringify({
-//         _id: cardId,
-//       }),
-//     }).then(this._getResult);
-//   }
-
-//   changeLikeCardStatus(cardId, isLiked) {
-//     return fetch(`${this._baseUrl}` + `/cards/` + `${cardId}` + `/likes`, {
-//       method: isLiked ? `PUT` : `DELETE`,
-//       headers: this._headers,
-//     }).then(this._getResult);
-//   }
-
-//   changeAvatar(avatar) {
-//     return fetch(`${this._baseUrl}` + `/users/me/avatar`, {
-//       headers: this._headers,
-//       method: "PATCH",
-//       body: JSON.stringify({
-//         avatar: avatar,
-//       }),
-//     }).then(this._getResult);
-//   }
 }
 
 const api = new moviesApi({

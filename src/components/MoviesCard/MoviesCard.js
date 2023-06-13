@@ -14,7 +14,7 @@ function MoviesCard(props){
                 setOnSave(true);
             }
     })
-    }, [currentMovie])
+    }, [currentMovie, props.movieId])
 
     function handleClickSaveMovie(){
         props.clickSaveMovie(props.movie);

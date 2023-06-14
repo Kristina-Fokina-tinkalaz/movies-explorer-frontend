@@ -1,4 +1,6 @@
 https://movie-tinkalaz.frontend.nomoredomains.rocks/
+https://github.com/Kristina-Fokina-tinkalaz/movies-explorer-frontend/pull/2
+
 
 Ссылка на файл figma : https://disk.yandex.ru/d/ZV1Gyb_5g4KDEA
 

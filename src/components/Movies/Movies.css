@@ -1,0 +1,12 @@
+.movies__error {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 18px;
+    margin: 70px 70px 8px 70px;
+}
+
+.movies__error_none {
+    display: none;
+}

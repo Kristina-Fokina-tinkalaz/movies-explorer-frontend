@@ -9,7 +9,7 @@ function Switch(props){
     }
     return(
         <label className="switch">
-            <input onChange={onCheckSwitch} className="switch__checkbox" type="checkbox" checked={props.checkedSwitch} /> 
+            <input onClick={props.onClickSwitch} onChange={onCheckSwitch} className="switch__checkbox" type="checkbox" checked={props.checkedSwitch} /> 
             <span className="switch__slider"></span>
         </label>
     )

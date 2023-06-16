@@ -14,7 +14,7 @@ function SearchForm(props){
                     </button>
                 </div>
                 <div className="search-form__slider-block">
-                    <Switch checkedSwitch={props.checkedSwitch} cancelCheckSwitch={props.cancelCheckSwitch} onCheckSwitch={props.onCheckSwitch}/>
+                    <Switch onClickSwitch={props.onClickSwitch} checkedSwitch={props.checkedSwitch} cancelCheckSwitch={props.cancelCheckSwitch} onCheckSwitch={props.onCheckSwitch}/>
                     <span className="search-form__label">Короткометражки</span>
                 </div>
             </form>

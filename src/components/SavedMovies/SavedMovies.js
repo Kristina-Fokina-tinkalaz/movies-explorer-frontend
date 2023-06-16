@@ -16,8 +16,8 @@ function Movies(props){
        
             <CurrentMovie.Provider value={props.savedMoviesList}>
                 <main className="movies">
-                    <SearchForm onClickSwitch={props.onClickSwitch } cancelCheckSwitch={props.cancelCheckSwitch} onCheckSwitch={props.onCheckSwitch} checkedSwitch={props.checkedSwitch} handleSearch={props.handleSearch} search={props.search} handleSearchChange={props.handleSearchChange}/>
-                    <p className={props.isErrorTextMovie ? "movies__error": "movies__error_none"}>{props.errorTextMovie}</p>
+                    <SearchForm onClickSwitch={props.onClickSwitch} cancelCheckSwitch={props.cancelCheckSwitch} onCheckSwitch={props.onCheckSwitch} checkedSwitch={props.checkedSwitch} handleSearch={props.handleSearch} search={props.search} handleSearchChange={props.handleSearchChange}/>
+                    <p className={props.isErrorTextSavedMovie ? "movies__error": "movies__error_none"}>{props.errorTextSavedMovie}</p>
                     <Preloader isLoading={props.isLoading} />
                     <MoviesCardList
                         mainMovies={props.mainMovies}

@@ -11,7 +11,10 @@ function Auth(props){
     const [errorPassword, setErrorPassword] = useState('');
     const [formValid, setFormValid] = useState(false);
     const regEmail = /^((([0-9A-Za-z]{1}[-0-9A-z\.]{1,}[0-9A-Za-z]{1})|([0-9А-Яа-я]{1}[-0-9А-я\.]{1,}[0-9А-Яа-я]{1}))@([-A-Za-z]{1,}\.){1,2}[-A-Za-z]{2,})$/u;
+    const regName =/([a-z-. а-яёA-ZА-ЯЁ]+)$/g;
+
     useEffect(() => {
+
         if (props.loginPage){
              if (errorEmail === '' && errorPassword === '' && email !== '' && password !== ''){
             setFormValid(true);
@@ -30,6 +33,7 @@ function Auth(props){
  
     function handleEmailChange(e){
         setEmail(e.target.value);
+        
         if (!regEmail.test(e.target.value)){
             setErrorEmail('Необходимо ввести email в формате ivanov@mail.ru');
         } else {
@@ -42,7 +46,13 @@ function Auth(props){
     }
     function handleNameChange(e){
         setName(e.target.value);
-        setErrorName(e.target.validationMessage);   
+     
+        if (!regName.test(e.target.value)){
+            setErrorName('Вы можете использовать только кирилицу, латиницу, пробел и дефис');
+        } else {
+            setErrorName(e.target.validationMessage); 
+        }
+          
     }
     const handleSubmit = (e) => {
         e.preventDefault();

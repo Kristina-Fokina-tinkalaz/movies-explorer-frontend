@@ -256,7 +256,7 @@ function App() {
   const navigate = useNavigate();
 
     const tokenCheck = () => {
-      console.log(loggedIn);
+   
 
      if (localStorage.getItem('jwt') !== null) {
       const jwt = localStorage.getItem("jwt");

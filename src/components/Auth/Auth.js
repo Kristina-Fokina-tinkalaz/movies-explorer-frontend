@@ -10,7 +10,7 @@ function Auth(props){
     const [errorEmail, setErrorEmail] = useState('');
     const [errorPassword, setErrorPassword] = useState('');
     const [formValid, setFormValid] = useState(false);
-
+    const regEmail = /^((([0-9A-Za-z]{1}[-0-9A-z\.]{1,}[0-9A-Za-z]{1})|([0-9А-Яа-я]{1}[-0-9А-я\.]{1,}[0-9А-Яа-я]{1}))@([-A-Za-z]{1,}\.){1,2}[-A-Za-z]{2,})$/u;
     useEffect(() => {
         if (props.loginPage){
              if (errorEmail === '' && errorPassword === '' && email !== '' && password !== ''){
@@ -30,7 +30,11 @@ function Auth(props){
  
     function handleEmailChange(e){
         setEmail(e.target.value);
-        setErrorEmail(e.target.validationMessage);
+        if (!regEmail.test(e.target.value)){
+            setErrorEmail('Необходимо ввести email в формате ivanov@mail.ru');
+        } else {
+            setErrorEmail(e.target.validationMessage);
+        }  
     }
     function handlePasswordChange(e){
         setPassword(e.target.value);

@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { regName, regEmail, textErrorName, textErrorEmail } from '../../utils/constants';
 
 
 function Auth(props){
@@ -10,8 +11,6 @@ function Auth(props){
     const [errorEmail, setErrorEmail] = useState('');
     const [errorPassword, setErrorPassword] = useState('');
     const [formValid, setFormValid] = useState(false);
-    const regEmail = /^((([0-9A-Za-z]{1}[-0-9A-z\.]{1,}[0-9A-Za-z]{1})|([0-9А-Яа-я]{1}[-0-9А-я\.]{1,}[0-9А-Яа-я]{1}))@([-A-Za-z]{1,}\.){1,2}[-A-Za-z]{2,})$/u;
-    const regName =/([a-z-. а-яёA-ZА-ЯЁ]+)$/g;
 
     useEffect(() => {
 
@@ -35,7 +34,7 @@ function Auth(props){
         setEmail(e.target.value);
         
         if (!regEmail.test(e.target.value)){
-            setErrorEmail('Необходимо ввести email в формате ivanov@mail.ru');
+            setErrorEmail(textErrorEmail);
         } else {
             setErrorEmail(e.target.validationMessage);
         }  
@@ -46,13 +45,11 @@ function Auth(props){
     }
     function handleNameChange(e){
         setName(e.target.value);
-     
-        if (!regName.test(e.target.value)){
-            setErrorName('Вы можете использовать только кирилицу, латиницу, пробел и дефис');
+        if (!/^[a-zA-Zа-яёА-ЯЁ\-. ]+$/g.test(e.target.value)){
+            setErrorName(textErrorName);
         } else {
             setErrorName(e.target.validationMessage); 
-        }
-          
+        }  
     }
     const handleSubmit = (e) => {
         e.preventDefault();

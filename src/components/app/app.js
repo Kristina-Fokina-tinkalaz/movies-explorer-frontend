@@ -18,6 +18,7 @@ import Profile from "../Profile/Profile";
 import mainApi from "../../utils/MainApi";
 import api from "../../utils/MoviesApi";
 import ProtectedRouteElement from '../ProtectedRoute/ProtectedRoute';
+import { windowWidthSmall, windowWidthBig, durationShortMovie, textErrorSearch, textErrorSearchNotFound, textErrorSearchSavedMovie, textErrorServerSearch, sumMoviesOnBigWidth, sumMoviesOnMediumWidth, sumMoviesOmSmallWidth, addMoviesOnBigWigth, addMoviesOnMediumWigth, addMoviesOnSmallWigth, textRegisterOk, textRegisterError, textLoginOk, textUpdateOk } from "../../utils/constants";
 
 function App() {
  
@@ -39,7 +40,6 @@ function App() {
   const [errorTextSavedMovie, setErrorTextSavedMovie] = useState('');
   const [isErrorTextSavedMovie, setIsErrorTextSavedMovie] = useState(false);
   const [shortMovies, setShortMovies] = useState([]);
-  // const history = useHistory();
 
     useEffect(()=>{
       
@@ -99,7 +99,7 @@ function App() {
       if (JSON.parse(localStorage.getItem('movies')) !== null){
       let result =[];
       JSON.parse(localStorage.getItem('movies')).map((movie) => {
-        if (movie.duration < 40){
+        if (movie.duration < durationShortMovie){
           result.push(movie);
         }
       })
@@ -124,7 +124,7 @@ function App() {
       e.preventDefault();
         if (searchSavedMovies === ''){
             setIsOpenInfoTooltip(true);
-            setTextInfoTooltip('Нужно ввести ключевое слово');
+            setTextInfoTooltip(textErrorSearch);
             setImgInfoTooltip(imgError);
         }
         else {
@@ -134,7 +134,7 @@ function App() {
                 if (movie.nameRU.toLowerCase().includes(searchSavedMovies) || movie.nameEN.toLowerCase().includes(searchSavedMovies)){
                   if (!checkedSwitch){
                     result.push(movie);
-                  } else if (movie.duration < 40){ 
+                  } else if (movie.duration < durationShortMovie){ 
                     result.push(movie);
                   }
                 } 
@@ -145,13 +145,13 @@ function App() {
                 if (result.length === 0){
                   setSavedMovies(result);
                   setIsErrorTextSavedMovie(true);
-                  setErrorTextSavedMovie('Ничего не найдено, попробуйте еще раз');
+                  setErrorTextSavedMovie(textErrorSearchNotFound);
                 }
               }
               )
               } else {
                 setIsErrorTextSavedMovie(true);
-                setErrorTextSavedMovie('Вы еще ничего не сохранили');
+                setErrorTextSavedMovie(textErrorSearchSavedMovie);
               }
            
           }
@@ -160,7 +160,7 @@ function App() {
         e.preventDefault();
         if (search === ''){
             setIsOpenInfoTooltip(true);
-            setTextInfoTooltip('Нужно ввести ключевое слово');
+            setTextInfoTooltip(textErrorSearch);
             setImgInfoTooltip(imgError);
         }
         else {
@@ -171,7 +171,7 @@ function App() {
                 let result = [];
                 dataMovies.map((movie) => {
                   if (movie.nameRU.toLowerCase().includes(search) || movie.nameEN.toLowerCase().includes(search)){
-                        if (checkedSwitch && movie.duration < 40){
+                        if (checkedSwitch && movie.duration < durationShortMovie){
                           result.push(movie);
                         } else if (!checkedSwitch) {
                           result.push(movie);
@@ -186,7 +186,7 @@ function App() {
                 showMovies();
                 if (result.length === 0){
                     setIsErrorTextMovie(true);
-                    setErrorTextMovie('Ничего не найдено, попробуйте еще раз');
+                    setErrorTextMovie(textErrorSearchNotFound);
                 }
                 else {
                   setIsErrorTextMovie(false);
@@ -195,7 +195,7 @@ function App() {
             })
             .catch(() => {
               setIsOpenInfoTooltip(true);
-              setTextInfoTooltip('Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз');
+              setTextInfoTooltip(textErrorServerSearch);
               setImgInfoTooltip(imgError);
             });
         }
@@ -209,23 +209,23 @@ function App() {
       }
 
       function show(mainMoviesFromStorage){
-           if (window.innerWidth > 870){
-                    setMainMovies(mainMoviesFromStorage.slice(0, 12));
-                    if (mainMoviesFromStorage.length > 12) {
+           if (window.innerWidth > windowWidthBig){
+                    setMainMovies(mainMoviesFromStorage.slice(0, sumMoviesOnBigWidth));
+                    if (mainMoviesFromStorage.length > sumMoviesOnBigWidth) {
                         setButtonMore(true);
                     } else {
                         setButtonMore(false);
                     }
-                } else if (window.innerWidth > 480 && window.innerWidth <= 870){
-                    setMainMovies(mainMoviesFromStorage.slice(0, 8));
-                    if (mainMoviesFromStorage.length > 8) {
+                } else if (window.innerWidth > windowWidthSmall && window.innerWidth <= windowWidthBig){
+                    setMainMovies(mainMoviesFromStorage.slice(0, sumMoviesOnMediumWidth));
+                    if (mainMoviesFromStorage.length > sumMoviesOnMediumWidth ) {
                         setButtonMore(true);
                     } else {
                         setButtonMore(false);
                     }
                 } else {
-                    setMainMovies(mainMoviesFromStorage.slice(0, 5));
-                    if (mainMoviesFromStorage.length > 5) {
+                    setMainMovies(mainMoviesFromStorage.slice(0, sumMoviesOmSmallWidth));
+                    if (mainMoviesFromStorage.length > sumMoviesOmSmallWidth) {
                         setButtonMore(true);
                     } else {
                         setButtonMore(false);
@@ -242,12 +242,12 @@ function App() {
           clickButton(JSON.parse(localStorage.getItem('movies')));
       }
         function clickButton(moviesList){
-              if (window.innerWidth > 870){
-                setMainMovies([...mainMovies, ...moviesList.slice(mainMovies.length, mainMovies.length + 3)]);
-            } else if (window.innerWidth > 480 && window.innerWidth <= 870){
-                setMainMovies([...mainMovies, ...moviesList.slice(mainMovies.length, mainMovies.length + 2)]);
+              if (window.innerWidth > windowWidthBig){
+                setMainMovies([...mainMovies, ...moviesList.slice(mainMovies.length, mainMovies.length + addMoviesOnBigWigth)]);
+            } else if (window.innerWidth > windowWidthSmall && window.innerWidth <= windowWidthBig){
+                setMainMovies([...mainMovies, ...moviesList.slice(mainMovies.length, mainMovies.length + addMoviesOnMediumWigth)]);
             } else {
-                setMainMovies([...mainMovies, ...moviesList.slice(mainMovies.length, mainMovies.length + 5)]);
+                setMainMovies([...mainMovies, ...moviesList.slice(mainMovies.length, mainMovies.length + addMoviesOnSmallWigth)]);
             }
         }
          
@@ -285,21 +285,21 @@ function App() {
         setIsOpenInfoTooltip(true);
       })
       .then(() => {
-        setTextInfoTooltip("Вы успешно зарегистрировались!");
+        setTextInfoTooltip(textRegisterOk);
         setImgInfoTooltip(imgOk);
         handleLogin({email, password})
       })
       .catch((err) => {
-        setTextInfoTooltip("Что-то пошло не так! Попробуйте ещё раз.");
+        setTextInfoTooltip(textRegisterError);
         setImgInfoTooltip(imgError);
        
       });
   }
   function closeInfoTooltip() {
-    if (textInfoTooltip === "Вы успешно зарегистрировались!") {
+    if (textInfoTooltip === textRegisterOk) {
       navigate("/signin", { replace: true });
     }
-    if (textInfoTooltip === "Вы успешно вошли на сайт!") {
+    if (textInfoTooltip === textLoginOk) {
       navigate("/", { replace: true });
     }
     setIsOpenInfoTooltip(false);
@@ -312,7 +312,7 @@ function App() {
       })
       .then((data) => {
         if (data.token) {
-          setTextInfoTooltip("Вы успешно вошли на сайт!");
+          setTextInfoTooltip(textLoginOk);
           setImgInfoTooltip(imgOk);
           localStorage.setItem("jwt", data.token);
           setUserEmail(data.email);
@@ -322,7 +322,7 @@ function App() {
        
       })
       .catch((err) => {
-        setTextInfoTooltip("Что-то пошло не так! Попробуйте ещё раз.");
+        setTextInfoTooltip(textRegisterError);
         setImgInfoTooltip(imgError);
         console.log(err);
       });
@@ -389,7 +389,7 @@ function clickSaveMovie(card){
       setUserEmail(userData.email);
       setUserName(userData.name);
       setIsOpenInfoTooltip(true);
-      setTextInfoTooltip('Данные профиля изменены');
+      setTextInfoTooltip(textUpdateOk);
       setImgInfoTooltip(imgOk);
     })
       .catch((err) => {

@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from "react";
+import { regEmail, regName, textErrorEmail, textErrorName } from "../../utils/constants";
 
 function ProfileForm(props){
 
@@ -16,14 +17,26 @@ function ProfileForm(props){
         }
     }, [errorName, errorEmail, name, email, props.userName, props.userEmail])
 
-    function handleNameChange(e){
+   function handleNameChange(e){
         setName(e.target.value);
-        setErrorName(e.target.validationMessage);
+        if (!/^[a-zA-Zа-яёА-ЯЁ\-. ]+$/g.test(e.target.value)){
+            setErrorName(textErrorName);
+        } else {
+            setErrorName(e.target.validationMessage); 
+        }
+          
     }
+    
     function handleEmailChange(e){
         setEmail(e.target.value);
-        setErrorEmail(e.target.validationMessage);
+        
+        if (!regEmail.test(e.target.value)){
+            setErrorEmail(textErrorEmail);
+        } else {
+            setErrorEmail(e.target.validationMessage);
+        }  
     }
+
     function clickSubmitProfileForm(){
         props.submitProfileForm(name, email);
     }

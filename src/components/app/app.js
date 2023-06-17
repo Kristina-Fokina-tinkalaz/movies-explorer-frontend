@@ -1,6 +1,7 @@
 
-import { Route, Routes , useNavigate, Navigate} from "react-router-dom";
+import { Route, Routes , useNavigate, Navigate } from "react-router-dom";
 import React, { useState, useEffect } from "react";
+
 import "../../index.css";
 
 import Main from "../Main/Main";
@@ -38,6 +39,7 @@ function App() {
   const [errorTextSavedMovie, setErrorTextSavedMovie] = useState('');
   const [isErrorTextSavedMovie, setIsErrorTextSavedMovie] = useState(false);
   const [shortMovies, setShortMovies] = useState([]);
+  // const history = useHistory();
 
     useEffect(()=>{
       
@@ -276,7 +278,7 @@ function App() {
  
 
   function handleRegister({name, email, password}) {
-    
+
     return auth
       .register({name, email, password})
       .finally(() => {
@@ -402,7 +404,9 @@ function clickSaveMovie(card){
   function onClickSavedSwitch(){
 
   }
-
+  function clickGoBack(){
+    navigate(-1);
+  }
   return (
     <div className="main">
         <Routes>
@@ -410,9 +414,9 @@ function clickSaveMovie(card){
             path="*"
             element={
               (localStorage.getItem('jwt') !== null) ? (
-                <ErrorPage /> 
+                <ErrorPage clickGoBack={clickGoBack} /> 
               ) : (
-                <Navigate to="/" replace />
+                <Navigate to="/" replace={true} />
               )
             }
           />
@@ -488,7 +492,7 @@ function clickSaveMovie(card){
             path="/signup"
             element={
              loggedIn ?
-                <Navigate to="/" replace />  
+                <Navigate to="/" replace={true} />  
                 :
                 <Auth loginPage={false} onSubmit={handleRegister}/>
             }
@@ -497,7 +501,7 @@ function clickSaveMovie(card){
             path="/signin"
             element={
               loggedIn ? 
-                <Navigate to="/" replace />
+                <Navigate to="/" replace={true} />
                   :
                 <Auth loginPage={true} onSubmit={handleLogin} />}
             />

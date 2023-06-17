@@ -7,6 +7,8 @@ import { CurrentMovie } from '../../context/CurrentMovie';
 function MoviesCard(props){
     const currentMovie = useContext(CurrentMovie);
     const [onSave, setOnSave] = useState(false);
+    
+
 
     useEffect(()=>{
         currentMovie.map((movie) => {
@@ -14,6 +16,7 @@ function MoviesCard(props){
                 setOnSave(true);
             }
     })
+
     }, [currentMovie, props.movieId])
 
     function handleClickSaveMovie(){
@@ -25,11 +28,22 @@ function MoviesCard(props){
         props.clickCancelSaveMovie(props.movie);
          setOnSave(false);  
     }
+    
+   
+        let newTime = '';
+        if (props.time < 60){
+            newTime = `${props.time}м`;
+        } else {
+            newTime = `${Math.floor(props.time/60)}ч ${props.time - (Math.floor(props.time/60) * 60)}м`;
+        }
+        
+    
+   
 
     return(
         <div className="movies-card" id={props.movieId}>
             <h2 className="movies-card__header">{props.header}</h2>
-            <span className="movies-card__time">{props.time}</span>
+            <span className="movies-card__time">{newTime}</span>
             <a href={props.trailerLink} target="_blank" rel="noreferrer">
                 <img className="movies-card__img" src={props.img} alt={props.img_alt} />
             </a>

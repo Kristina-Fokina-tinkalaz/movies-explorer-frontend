@@ -40,8 +40,7 @@ function App() {
   const [shortMovies, setShortMovies] = useState([]);
 
     useEffect(()=>{
-      
-         tokenCheck();
+        tokenCheck();
 
       if (loggedIn){
 
@@ -252,7 +251,6 @@ function App() {
     }
 
   const navigate = useNavigate();
-
     const tokenCheck = () => {
       console.log(loggedIn);
 
@@ -269,9 +267,6 @@ function App() {
           navigate("/signin", { replace: true });
         });
     }
-
- 
- 
   };
  
 

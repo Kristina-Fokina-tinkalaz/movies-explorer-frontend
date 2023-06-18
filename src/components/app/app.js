@@ -22,7 +22,7 @@ import { windowWidthSmall, windowWidthBig, durationShortMovie, textErrorSearch, 
 
 function App() {
  
-  const [loggedIn, setLoggedIn] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(localStorage.getItem('loggedIn') || false);
   const [userName, setUserName] = useState('');
   const [userEmail, setUserEmail] = useState('');
   const [savedMovies, setSavedMovies] = useState([]);
@@ -41,10 +41,10 @@ function App() {
   const [isErrorTextSavedMovie, setIsErrorTextSavedMovie] = useState(false);
   const [shortMovies, setShortMovies] = useState([]);
 
+    tokenCheck();
+
     useEffect(()=>{
       
-         tokenCheck();
-
       if (loggedIn){
 
          mainApi
@@ -255,30 +255,25 @@ function App() {
 
   const navigate = useNavigate();
 
-    const tokenCheck = () => {
-   
-
-     if (localStorage.getItem('jwt') !== null) {
-      const jwt = localStorage.getItem("jwt");
-      auth
-        .checkToken(jwt)
-        .then(() => {
-          setLoggedIn(true);
-          // navigate("/movies", { replace: true });
-        })
-        .catch((err) => {
-          console.log(`err: ` +err);
-          navigate("/signin", { replace: true });
-        });
-    }
-
- 
- 
-  };
+  function tokenCheck(){
+    if (localStorage.getItem('jwt') !== null) {
+    const jwt = localStorage.getItem('jwt');
+    auth
+      .checkToken(jwt)
+      .then(() => {
+        localStorage.setItem('loggedIn', true);
+        setLoggedIn(true);
+      })
+      .catch((err) => {
+    
+        console.log(`err: ` + err);
+        navigate("/signin", { replace: true });
+      });
+  }
+};
  
 
   function handleRegister({name, email, password}) {
-
     return auth
       .register({name, email, password})
       .finally(() => {
@@ -318,6 +313,7 @@ function App() {
           setUserEmail(data.email);
           setUserName(data.name);
           setLoggedIn(true);
+          localStorage.setItem('loggedIn', true);
         }
        
       })
@@ -410,16 +406,6 @@ function clickSaveMovie(card){
   return (
     <div className="main">
         <Routes>
-          <Route
-            path="*"
-            element={
-              (localStorage.getItem('jwt') !== null) ? (
-                <ErrorPage clickGoBack={clickGoBack} /> 
-              ) : (
-                <Navigate to="/" replace={true} />
-              )
-            }
-          />
             <Route
             path="/"
             element={<Main loggedIn={loggedIn} />}
@@ -505,7 +491,16 @@ function clickSaveMovie(card){
                   :
                 <Auth loginPage={true} onSubmit={handleLogin} />}
             />
-          
+          <Route
+            path="*"
+            element={
+              (localStorage.getItem('jwt') !== null) ? (
+                <ErrorPage clickGoBack={clickGoBack} /> 
+              ) : (
+                <Navigate to="/" replace={true} />
+              )
+            }
+          />
         </Routes>
          <InfoTooltip
           isOpen={isOpenInfoTooltip}

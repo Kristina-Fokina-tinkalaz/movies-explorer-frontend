@@ -18,8 +18,6 @@ class moviesApi extends React.Component {
       headers: this._headers,
     }).then(this._getResult);
   }
-
-
 }
 
 const api = new moviesApi({

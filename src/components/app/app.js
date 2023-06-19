@@ -23,8 +23,8 @@ import { windowWidthSmall, windowWidthBig, durationShortMovie, textErrorSearch, 
 function App() {
  
   const [loggedIn, setLoggedIn] = useState(localStorage.getItem('loggedIn') || false);
-  const [userName, setUserName] = useState('');
-  const [userEmail, setUserEmail] = useState('');
+  const [userName, setUserName] = useState(localStorage.getItem('name') || '');
+  const [userEmail, setUserEmail] = useState(localStorage.getItem('email') || '');
   const [savedMovies, setSavedMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [mainMovies, setMainMovies] = useState([]);
@@ -52,6 +52,8 @@ function App() {
         .then((data) => {
           setUserName(data.name);
           setUserEmail(data.email);
+          localStorage.setItem('name', data.name);
+          localStorage.setItem('email', data.email);
         })
          .catch((err) => {
               setIsOpenInfoTooltip(true);
@@ -403,6 +405,8 @@ function clickSaveMovie(card){
       setIsOpenInfoTooltip(true);
       setTextInfoTooltip(textUpdateOk);
       setImgInfoTooltip(imgOk);
+      localStorage.setItem('name', userData.name);
+      localStorage.setItem('email', userData.email);
     })
       .catch((err) => {
               setIsOpenInfoTooltip(true);

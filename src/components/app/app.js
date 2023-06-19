@@ -1,5 +1,5 @@
 
-import { Route, Routes , useNavigate, Navigate } from "react-router-dom";
+import { Route, Routes , useNavigate, Navigate, useLocation} from "react-router-dom";
 import React, { useState, useEffect } from "react";
 
 import "../../index.css";
@@ -35,11 +35,14 @@ function App() {
   const [imgInfoTooltip, setImgInfoTooltip] = useState("");
   const [buttonMore, setButtonMore] = useState(false);
   const [checkedSwitch, setCheckedSwitch] = useState(false);
+  const [checkedSwitchSavedMovies, setCheckedSwitchSavedMovies] = useState(false);
   const [errorTextMovie, setErrorTextMovie] = useState('');
   const [isErrorTextMovie, setIsErrorTextMovie] = useState(false);
   const [errorTextSavedMovie, setErrorTextSavedMovie] = useState('');
   const [isErrorTextSavedMovie, setIsErrorTextSavedMovie] = useState(false);
   const [shortMovies, setShortMovies] = useState([]);
+
+  const location = useLocation();
 
     tokenCheck();
 
@@ -60,7 +63,9 @@ function App() {
               setTextInfoTooltip(err);
               setImgInfoTooltip(imgError);
             });
-    
+          
+     
+
       mainApi
         .getInitialMovies()
         .then((moviesList) => {
@@ -77,14 +82,20 @@ function App() {
           setButtonMore(false);
         }
        
-      
+       if (localStorage.getItem('saved-movies') !== null){
+        setSavedMovies(JSON.parse(localStorage.getItem('saved-movies')));
+       }
+       setSearchSavedMovies('');
+       setErrorTextSavedMovie('');
+       setIsErrorTextSavedMovie(false);
+
         if (mainMovies === shortMovies && localStorage.getItem('short-movies') !== null && mainMovies.length === JSON.parse(localStorage.getItem('short-movies').length)){
           setButtonMore(false);
         }
       }
        
       
-    }, [ setSavedMovies, setUserName, setUserEmail, loggedIn, mainMovies ] );
+    }, [ setSavedMovies, setUserName, setUserEmail, loggedIn, mainMovies, location] );
 
     useEffect(()=>{
       if (loggedIn){
@@ -130,9 +141,9 @@ function App() {
             setImgInfoTooltip(imgError);
         }
         else {
-              if (localStorage.getItem('saved-movies') !== null){
+              if (searchSavedMovies !== null){
                    let result = [];
-              JSON.parse(localStorage.getItem('saved-movies')).map((movie) => {
+             JSON.parse(localStorage.getItem('saved-movies')).map((movie) => {
                 if (movie.nameRU.toLowerCase().includes(searchSavedMovies) || movie.nameEN.toLowerCase().includes(searchSavedMovies)){
                   if (!checkedSwitch){
                     result.push(movie);
@@ -484,7 +495,7 @@ function clickSaveMovie(card){
                     handleSearchChange={handleSearchSavedMoviesChange}
                     search={searchSavedMovies}
                     isLoading={isLoading}
-                    checkedSwitch={checkedSwitch}
+                    checkedSwitch={checkedSwitchSavedMovies}
                     onClickSwitch={onClickSavedSwitch}
                     cancelCheckSwitch={cancelCheckSwitch}
                     onCheckSwitch={onCheckSwitch}

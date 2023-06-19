@@ -88,6 +88,7 @@ function App() {
        setSearchSavedMovies('');
        setErrorTextSavedMovie('');
        setIsErrorTextSavedMovie(false);
+       setCheckedSwitchSavedMovies(false);
 
         if (mainMovies === shortMovies && localStorage.getItem('short-movies') !== null && mainMovies.length === JSON.parse(localStorage.getItem('short-movies').length)){
           setButtonMore(false);
@@ -120,12 +121,31 @@ function App() {
       localStorage.setItem('short-movies', JSON.stringify(result));
       setShortMovies(result);
     }
-
     }
+
+    function onCheckSwitchSavedMovies(){
+      setCheckedSwitchSavedMovies(true);
+      if (localStorage.getItem('saved-movies') !== null){
+        let result =[];
+        JSON.parse(localStorage.getItem('saved-movies')).map((movie) => {
+          if (movie.duration < durationShortMovie){
+            result.push(movie);
+          }
+        })
+        setSavedMovies(result);
+      }
+    }
+
     function cancelCheckSwitch(){
       setCheckedSwitch(false);
       setMainMovies(JSON.parse(localStorage.getItem('movies')));
     }
+
+    function cancelCheckSwitchSavedMovies(){
+      setCheckedSwitchSavedMovies(false);
+      setSavedMovies(JSON.parse(localStorage.getItem('saved-movies')));
+    }
+
      function handleSearchChange(e){
         setSearch(e.target.value);
     }
@@ -497,8 +517,8 @@ function clickSaveMovie(card){
                     isLoading={isLoading}
                     checkedSwitch={checkedSwitchSavedMovies}
                     onClickSwitch={onClickSavedSwitch}
-                    cancelCheckSwitch={cancelCheckSwitch}
-                    onCheckSwitch={onCheckSwitch}
+                    cancelCheckSwitch={cancelCheckSwitchSavedMovies}
+                    onCheckSwitch={onCheckSwitchSavedMovies}
                     errorTextSavedMovie={errorTextSavedMovie}
                     isErrorTextSavedMovie={isErrorTextSavedMovie}
                     />

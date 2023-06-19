@@ -44,7 +44,7 @@ function App() {
     tokenCheck();
 
     useEffect(()=>{
-      
+        tokenCheck();
       if (loggedIn){
 
          mainApi
@@ -75,7 +75,7 @@ function App() {
           setButtonMore(false);
         }
        
-        console.log()
+      
         if (mainMovies === shortMovies && localStorage.getItem('short-movies') !== null && mainMovies.length === JSON.parse(localStorage.getItem('short-movies').length)){
           setButtonMore(false);
         }
@@ -182,7 +182,7 @@ function App() {
                 localStorage.setItem('movies', JSON.stringify(result));
                 localStorage.setItem('search', search);
                 localStorage.setItem('checkedSwitch', checkedSwitch);
-                console.log(dataMovies);
+            
                 showMovies();
                 if (result.length === 0){
                     setIsErrorTextMovie(true);
@@ -254,7 +254,6 @@ function App() {
     }
 
   const navigate = useNavigate();
-
   function tokenCheck(){
     if (localStorage.getItem('jwt') !== null) {
     const jwt = localStorage.getItem('jwt');
@@ -271,8 +270,24 @@ function App() {
       });
   }
 };
- 
 
+    function tokenCheck(){
+      console.log(loggedIn);
+
+     if (localStorage.getItem('jwt') !== null) {
+      const jwt = localStorage.getItem("jwt");
+      auth
+        .checkToken(jwt)
+        .then(() => {
+          setLoggedIn(true);
+          // navigate("/movies", { replace: true });
+        })
+        .catch((err) => {
+          console.log(`err: ` +err);
+          navigate("/signin", { replace: true });
+        });
+    }
+  };
   function handleRegister({name, email, password}) {
     return auth
       .register({name, email, password})
@@ -295,7 +310,7 @@ function App() {
       navigate("/signin", { replace: true });
     }
     if (textInfoTooltip === textLoginOk) {
-      navigate("/", { replace: true });
+      navigate("/movies", { replace: true });
     }
     setIsOpenInfoTooltip(false);
   }
@@ -314,6 +329,7 @@ function App() {
           setUserName(data.name);
           setLoggedIn(true);
           localStorage.setItem('loggedIn', true);
+          navigate("/movies", { replace: true});
         }
        
       })

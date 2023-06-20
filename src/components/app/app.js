@@ -18,7 +18,7 @@ import Profile from "../Profile/Profile";
 import mainApi from "../../utils/MainApi";
 import api from "../../utils/MoviesApi";
 import ProtectedRouteElement from '../ProtectedRoute/ProtectedRoute';
-import { windowWidthSmall, windowWidthBig, durationShortMovie, textErrorSearch, textErrorSearchNotFound, textErrorSearchSavedMovie, textErrorServerSearch, sumMoviesOnBigWidth, sumMoviesOnMediumWidth, sumMoviesOmSmallWidth, addMoviesOnBigWigth, addMoviesOnMediumWigth, addMoviesOnSmallWigth, textRegisterOk, textRegisterError, textLoginOk, textUpdateOk } from "../../utils/constants";
+import { WINDOW_WIDTH_SMALL, WINDOW_WIDTH_BIG, DURATION_SHORT_MOVIE, textErrorSearch, textErrorSearchNotFound, textErrorSearchSavedMovie, textErrorServerSearch, SUM_MOVIES_ON_BIG_WIDTH, SUM_MOVIES_ON_MEDIUM_WIDTH, SUM_MOVIES_ON_SMALL_WIDTH, ADD_MOVIES_ON_BIG_WIDTH, ADD_MOVIES_ON_MEDIUM_WIDTH, ADD_MOVIES_ON_SMALL_WIDTH, textRegisterOk, textRegisterError, textLoginOk, textUpdateOk } from "../../utils/constants";
 
 function App() {
  
@@ -112,7 +112,7 @@ function App() {
       if (JSON.parse(localStorage.getItem('movies')) !== null ){
       let result =[];
       JSON.parse(localStorage.getItem('movies')).map((movie) => {
-        if (movie.duration < durationShortMovie){
+        if (movie.duration < DURATION_SHORT_MOVIE){
           result.push(movie);
         }
       })
@@ -135,7 +135,7 @@ function App() {
       if (localStorage.getItem('saved-movies') !== null){
         let result =[];
         JSON.parse(localStorage.getItem('saved-movies')).map((movie) => {
-          if (movie.duration < durationShortMovie){
+          if (movie.duration < DURATION_SHORT_MOVIE){
             result.push(movie);
           }
         })
@@ -183,7 +183,7 @@ function App() {
                 if (movie.nameRU.toLowerCase().includes(searchSavedMovies) || movie.nameEN.toLowerCase().includes(searchSavedMovies)){
                   if (!checkedSwitch){
                     result.push(movie);
-                  } else if (movie.duration < durationShortMovie){ 
+                  } else if (movie.duration < DURATION_SHORT_MOVIE){ 
                     result.push(movie);
                   }
                 } 
@@ -226,7 +226,7 @@ function App() {
                 localStorage.setItem('movies', JSON.stringify(result));
                 let shortMovies = [];
                   result.map((movie) => {
-                    if (checkedSwitch && movie.duration < durationShortMovie){
+                    if (checkedSwitch && movie.duration < DURATION_SHORT_MOVIE){
                       shortMovies.push(movie);
                     }
                   })
@@ -262,23 +262,23 @@ function App() {
       }
 
       function show(mainMoviesFromStorage){
-           if (window.innerWidth > windowWidthBig){
-                    setMainMovies(mainMoviesFromStorage.slice(0, sumMoviesOnBigWidth));
-                    if (mainMoviesFromStorage.length > sumMoviesOnBigWidth) {
+           if (window.innerWidth > WINDOW_WIDTH_BIG){
+                    setMainMovies(mainMoviesFromStorage.slice(0, SUM_MOVIES_ON_BIG_WIDTH));
+                    if (mainMoviesFromStorage.length > SUM_MOVIES_ON_BIG_WIDTH) {
                         setButtonMore(true);
                     } else {
                         setButtonMore(false);
                     }
-                } else if (window.innerWidth > windowWidthSmall && window.innerWidth <= windowWidthBig){
-                    setMainMovies(mainMoviesFromStorage.slice(0, sumMoviesOnMediumWidth));
-                    if (mainMoviesFromStorage.length > sumMoviesOnMediumWidth ) {
+                } else if (window.innerWidth > WINDOW_WIDTH_SMALL && window.innerWidth <= WINDOW_WIDTH_BIG){
+                    setMainMovies(mainMoviesFromStorage.slice(0, SUM_MOVIES_ON_MEDIUM_WIDTH));
+                    if (mainMoviesFromStorage.length > SUM_MOVIES_ON_MEDIUM_WIDTH ) {
                         setButtonMore(true);
                     } else {
                         setButtonMore(false);
                     }
                 } else {
-                    setMainMovies(mainMoviesFromStorage.slice(0, sumMoviesOmSmallWidth));
-                    if (mainMoviesFromStorage.length > sumMoviesOmSmallWidth) {
+                    setMainMovies(mainMoviesFromStorage.slice(0, SUM_MOVIES_ON_SMALL_WIDTH));
+                    if (mainMoviesFromStorage.length > SUM_MOVIES_ON_SMALL_WIDTH) {
                         setButtonMore(true);
                     } else {
                         setButtonMore(false);
@@ -295,12 +295,12 @@ function App() {
           clickButton(JSON.parse(localStorage.getItem('movies')));
       }
         function clickButton(moviesList){
-              if (window.innerWidth > windowWidthBig){
-                setMainMovies([...mainMovies, ...moviesList.slice(mainMovies.length, mainMovies.length + addMoviesOnBigWigth)]);
-            } else if (window.innerWidth > windowWidthSmall && window.innerWidth <= windowWidthBig){
-                setMainMovies([...mainMovies, ...moviesList.slice(mainMovies.length, mainMovies.length + addMoviesOnMediumWigth)]);
+              if (window.innerWidth > WINDOW_WIDTH_BIG){
+                setMainMovies([...mainMovies, ...moviesList.slice(mainMovies.length, mainMovies.length + ADD_MOVIES_ON_BIG_WIDTH)]);
+            } else if (window.innerWidth > WINDOW_WIDTH_SMALL && window.innerWidth <= WINDOW_WIDTH_BIG){
+                setMainMovies([...mainMovies, ...moviesList.slice(mainMovies.length, mainMovies.length + ADD_MOVIES_ON_MEDIUM_WIDTH)]);
             } else {
-                setMainMovies([...mainMovies, ...moviesList.slice(mainMovies.length, mainMovies.length + addMoviesOnSmallWigth)]);
+                setMainMovies([...mainMovies, ...moviesList.slice(mainMovies.length, mainMovies.length + ADD_MOVIES_ON_SMALL_WIDTH)]);
             }
         }
          

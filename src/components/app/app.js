@@ -40,7 +40,6 @@ function App() {
   const [isErrorTextMovie, setIsErrorTextMovie] = useState(false);
   const [errorTextSavedMovie, setErrorTextSavedMovie] = useState('');
   const [isErrorTextSavedMovie, setIsErrorTextSavedMovie] = useState(false);
-  const [shortMovies, setShortMovies] = useState([]);
 
   const location = useLocation();
 
@@ -90,9 +89,9 @@ function App() {
        setIsErrorTextSavedMovie(false);
        setCheckedSwitchSavedMovies(false);
 
-        if (mainMovies === shortMovies && localStorage.getItem('short-movies') !== null && mainMovies.length === JSON.parse(localStorage.getItem('short-movies').length)){
-          setButtonMore(false);
-        }
+        // if (mainMovies === shortMovies && localStorage.getItem('short-movies') !== null && mainMovies.length === JSON.parse(localStorage.getItem('short-movies').length)){
+        //   setButtonMore(false);
+        // }
       }
        
       
@@ -119,7 +118,15 @@ function App() {
       })
       setMainMovies(result);
       localStorage.setItem('short-movies', JSON.stringify(result));
-      setShortMovies(result);
+
+      if (result.length === 0 ){
+            setIsErrorTextMovie(true);
+            setErrorTextMovie(textErrorSearchNotFound);
+      }
+      else {
+        setIsErrorTextMovie(false);
+        setErrorTextMovie('');
+      }
     }
     }
 
@@ -138,7 +145,16 @@ function App() {
 
     function cancelCheckSwitch(){
       setCheckedSwitch(false);
-      setMainMovies(JSON.parse(localStorage.getItem('movies')));
+      // setMainMovies(JSON.parse(localStorage.getItem('movies')));
+      let result = [];
+      JSON.parse(localStorage.getItem('movies')).map((movie) => {
+        if (movie.nameRU.toLowerCase().includes(search) || movie.nameEN.toLowerCase().includes(search)){
+          result.push(movie);
+        }
+      })
+      setMainMovies(result);
+       setIsErrorTextMovie(false);
+        setErrorTextMovie('');
     }
 
     function cancelCheckSwitchSavedMovies(){
@@ -204,20 +220,23 @@ function App() {
                 let result = [];
                 dataMovies.map((movie) => {
                   if (movie.nameRU.toLowerCase().includes(search) || movie.nameEN.toLowerCase().includes(search)){
-                        if (checkedSwitch && movie.duration < durationShortMovie){
-                          result.push(movie);
-                        } else if (!checkedSwitch) {
-                          result.push(movie);
-                        }
+                    result.push(movie);
                     }
-                    
                 })
                 localStorage.setItem('movies', JSON.stringify(result));
+                let shortMovies = [];
+                  result.map((movie) => {
+                    if (checkedSwitch && movie.duration < durationShortMovie){
+                      shortMovies.push(movie);
+                    }
+                  })
+                localStorage.setItem('short-movies', JSON.stringify(shortMovies));
+
                 localStorage.setItem('search', search);
                 localStorage.setItem('checkedSwitch', checkedSwitch);
             
                 showMovies();
-                if (result.length === 0){
+                if (result.length === 0 || (checkedSwitch && shortMovies.length === 0)){
                     setIsErrorTextMovie(true);
                     setErrorTextMovie(textErrorSearchNotFound);
                 }
@@ -225,6 +244,7 @@ function App() {
                   setIsErrorTextMovie(false);
                   setErrorTextMovie('');
                 }
+                
             })
             .catch(() => {
               setIsOpenInfoTooltip(true);
@@ -394,7 +414,6 @@ function App() {
     setIsErrorTextMovie(false);
     setErrorTextSavedMovie('');
     setIsErrorTextSavedMovie(false);
-    setShortMovies([]);
 
     localStorage.removeItem("jwt");
     navigate("/", { replace: true });

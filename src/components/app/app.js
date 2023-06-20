@@ -89,9 +89,10 @@ function App() {
        setIsErrorTextSavedMovie(false);
        setCheckedSwitchSavedMovies(false);
 
-        // if (mainMovies === shortMovies && localStorage.getItem('short-movies') !== null && mainMovies.length === JSON.parse(localStorage.getItem('short-movies').length)){
-        //   setButtonMore(false);
-        // }
+
+       if (checkedSwitch && localStorage.getItem('short-movies') !== null && mainMovies.length === JSON.parse(localStorage.getItem('short-movies')).length){
+        setButtonMore(false);
+       }
       }
        
       
@@ -109,6 +110,7 @@ function App() {
 
     function onCheckSwitch(){
       setCheckedSwitch(true);
+      
       if (JSON.parse(localStorage.getItem('movies')) !== null ){
       let result =[];
       JSON.parse(localStorage.getItem('movies')).map((movie) => {
@@ -146,15 +148,17 @@ function App() {
     function cancelCheckSwitch(){
       setCheckedSwitch(false);
       // setMainMovies(JSON.parse(localStorage.getItem('movies')));
-      let result = [];
-      JSON.parse(localStorage.getItem('movies')).map((movie) => {
+      if (localStorage.getItem('movies') !== null){
+         let result = [];
+          JSON.parse(localStorage.getItem('movies')).map((movie) => {
         if (movie.nameRU.toLowerCase().includes(search) || movie.nameEN.toLowerCase().includes(search)){
           result.push(movie);
         }
       })
-      setMainMovies(result);
-       setIsErrorTextMovie(false);
+        setMainMovies(result);
+        setIsErrorTextMovie(false);
         setErrorTextMovie('');
+      }
     }
 
     function cancelCheckSwitchSavedMovies(){
@@ -177,7 +181,7 @@ function App() {
             setImgInfoTooltip(imgError);
         }
         else {
-              if (searchSavedMovies !== null){
+              if (searchSavedMovies !== null && localStorage.getItem('saved-movies') !== null ){
                    let result = [];
              JSON.parse(localStorage.getItem('saved-movies')).map((movie) => {
                 if (movie.nameRU.toLowerCase().includes(searchSavedMovies) || movie.nameEN.toLowerCase().includes(searchSavedMovies)){
@@ -224,6 +228,7 @@ function App() {
                     }
                 })
                 localStorage.setItem('movies', JSON.stringify(result));
+
                 let shortMovies = [];
                   result.map((movie) => {
                     if (checkedSwitch && movie.duration < DURATION_SHORT_MOVIE){
@@ -393,10 +398,7 @@ function App() {
       });
   }
   const handleExit = () => {
-    if (localStorage.getItem('movies') !== null){
-      localStorage.clear();
-       
-    }
+    localStorage.clear();
     setLoggedIn(false);
     setUserName('');
     setUserEmail('');
@@ -415,7 +417,7 @@ function App() {
     setErrorTextSavedMovie('');
     setIsErrorTextSavedMovie(false);
 
-    localStorage.removeItem("jwt");
+    // localStorage.removeItem("jwt");
     navigate("/", { replace: true });
   };
 function clickSaveMovie(card){

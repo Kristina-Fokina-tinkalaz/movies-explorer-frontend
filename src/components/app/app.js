@@ -46,10 +46,9 @@ function App() {
     tokenCheck();
 
     useEffect(()=>{
-        tokenCheck();
-      if (loggedIn){
 
-         mainApi
+    if (loggedIn){
+      mainApi
         .getUserData()
         .then((data) => {
           setUserName(data.name);
@@ -63,8 +62,6 @@ function App() {
               setImgInfoTooltip(imgError);
             });
           
-     
-
       mainApi
         .getInitialMovies()
         .then((moviesList) => {
@@ -80,22 +77,16 @@ function App() {
       if ( localStorage.getItem('movies') !== null && mainMovies.length === JSON.parse(localStorage.getItem('movies')).length ){
           setButtonMore(false);
         }
-       
-       if (localStorage.getItem('saved-movies') !== null){
-        setSavedMovies(JSON.parse(localStorage.getItem('saved-movies')));
-       }
+  
        setSearchSavedMovies('');
        setErrorTextSavedMovie('');
        setIsErrorTextSavedMovie(false);
        setCheckedSwitchSavedMovies(false);
 
-
-       if (checkedSwitch && localStorage.getItem('short-movies') !== null && mainMovies.length === JSON.parse(localStorage.getItem('short-movies')).length){
+      if (checkedSwitch && localStorage.getItem('short-movies') !== null && mainMovies.length === JSON.parse(localStorage.getItem('short-movies')).length){
         setButtonMore(false);
-       }
       }
-       
-      
+      }
     }, [ setSavedMovies, setUserName, setUserEmail, loggedIn, mainMovies, location] );
 
     useEffect(()=>{
@@ -147,7 +138,6 @@ function App() {
 
     function cancelCheckSwitch(){
       setCheckedSwitch(false);
-      // setMainMovies(JSON.parse(localStorage.getItem('movies')));
       if (localStorage.getItem('movies') !== null){
          let result = [];
           JSON.parse(localStorage.getItem('movies')).map((movie) => {
@@ -330,7 +320,6 @@ function App() {
 };
 
     function tokenCheck(){
-      console.log(loggedIn);
 
      if (localStorage.getItem('jwt') !== null) {
       const jwt = localStorage.getItem("jwt");
@@ -338,7 +327,6 @@ function App() {
         .checkToken(jwt)
         .then(() => {
           setLoggedIn(true);
-          // navigate("/movies", { replace: true });
         })
         .catch((err) => {
           console.log(`err: ` +err);
@@ -416,8 +404,6 @@ function App() {
     setIsErrorTextMovie(false);
     setErrorTextSavedMovie('');
     setIsErrorTextSavedMovie(false);
-
-    // localStorage.removeItem("jwt");
     navigate("/", { replace: true });
   };
 function clickSaveMovie(card){
@@ -438,7 +424,8 @@ function clickSaveMovie(card){
            mainApi
             .deleteCard(movie._id)
             .then(() => {
-              setSavedMovies((state) => state.filter((m) => m._id != movie._id));
+              const newList = savedMovies.filter((m) => m._id != movie._id);
+              setSavedMovies(newList);
             })
              .catch((err) => {
               setIsOpenInfoTooltip(true);

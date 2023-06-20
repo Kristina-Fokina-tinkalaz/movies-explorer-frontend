@@ -7,8 +7,6 @@ import { CurrentMovie } from '../../context/CurrentMovie';
 function MoviesCard(props){
     const currentMovie = useContext(CurrentMovie);
     const [onSave, setOnSave] = useState(false);
-    
-
 
     useEffect(()=>{
         currentMovie.map((movie) => {
@@ -16,7 +14,6 @@ function MoviesCard(props){
                 setOnSave(true);
             }
     })
-
     }, [currentMovie, props.movieId])
 
     function handleClickSaveMovie(){
@@ -24,9 +21,8 @@ function MoviesCard(props){
         setOnSave(true);  
     }
     function cancelSaveMovie(){
-       
         props.clickCancelSaveMovie(props.movie);
-         setOnSave(false);  
+        setOnSave(false);
     }
     
    
